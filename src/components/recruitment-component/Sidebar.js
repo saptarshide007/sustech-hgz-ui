@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { FaTimes, FaBars, FaMicrosoft, FaBahai } from "react-icons/fa";
+import styles from "./Sidebar.Module.css";
 
 const Sidebar = () => {
   const [showSideBar, setSideBar] = useState(false);
   const toggleSideBar = () => {
     setSideBar(!showSideBar);
   };
-  const menuItems = ["Dashboard", "E-commerce"];
+  const menuItems = ["Dashboard", "Job Creation"];
   return (
     <div class={`page-wrapper chiller-theme ${showSideBar ? "toggled" : ""}`}>
       <a
