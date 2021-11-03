@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar";
 
 const Recruitment = () => {
   const menuItems = ["Dashboard", "E-commerce"];
-  return <Sidebar />;
+  return <Sidebar menuItems={menuItems} />;
 };
 
 export default Recruitment;

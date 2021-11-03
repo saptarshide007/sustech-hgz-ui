@@ -1,37 +1,39 @@
 import { useState } from "react";
 import { FaTimes, FaBars, FaMicrosoft, FaBahai } from "react-icons/fa";
-import styles from "./Sidebar.Module.css";
+import styles from "./Sidebar.module.css";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   const [showSideBar, setSideBar] = useState(false);
   const toggleSideBar = () => {
     setSideBar(!showSideBar);
   };
-  const menuItems = ["Dashboard", "Job Creation"];
   return (
-    <div class={`page-wrapper chiller-theme ${showSideBar ? "toggled" : ""}`}>
+    <div
+      className={`${styles["page-wrapper"]} ${styles["chiller-theme"]} ${
+        showSideBar && `${styles["toggled"]}`
+      }`}
+    >
       <a
         onClick={toggleSideBar}
-        id="show-sidebar"
+        id={`${styles["show-sidebar"]}`}
         class="btn btn-sm btn-dark"
         href="#"
       >
-        <i class="fas fa-bars"></i>
         <FaBars />
       </a>
-      <nav id="sidebar" class="sidebar-wrapper">
-        <div class="sidebar-content">
-          <div class="sidebar-brand">
+      <nav id="sidebar" className={`${styles["sidebar-wrapper"]}`}>
+        <div className={`${styles["sidebar-content"]}`}>
+          <div className={`${styles["sidebar-brand"]}`}>
             <a href="#">MENU</a>
-            <div id="close-sidebar">
+            <div id={`${styles["close-sidebar"]}`}>
               <FaTimes onClick={toggleSideBar} />
             </div>
           </div>
-          <div class="sidebar-menu">
+          <div className={`${styles["sidebar-menu"]}`}>
             <ul>
-              {menuItems.map((menuItem) => {
+              {props.menuItems.map((menuItem) => {
                 return (
-                  <li class="sidebar-dropdown">
+                  <li className={`${styles["sidebar-dropdown"]}`}>
                     <a href="#">
                       <i>{getItemIcon(menuItem)}</i>
                       <span>{menuItem}</span>

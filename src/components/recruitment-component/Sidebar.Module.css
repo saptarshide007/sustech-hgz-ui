@@ -153,13 +153,14 @@
   text-decoration: none;
   position: relative;
   padding: 8px 50px 8px 20px;
-  margin: 5px 0;
+  margin: 2px 0;
+  font-size: 18px;
 }
 
 .sidebar-wrapper .sidebar-menu ul li a i {
   margin-right: 20px;
-  font-size: 16px;
-  padding: 10px;
+  font-size: 20px;
+  padding: 3px 8px 8px 8px;
   width: 30px;
   height: 30px;
   line-height: 30px;
