@@ -99,47 +99,12 @@ function ExampleSideBarLink(props) {
   );
 }
 
-function ExampleSideBar(props) {
-  const expanded = props.expanded;
-
-  let sideBarClassName = "example-side-bar";
-
-  if (expanded) {
-    sideBarClassName += " example-side-bar-expanded";
-  }
-
-  return (
-    <aside className={sideBarClassName}>
-      <div className="example-side-bar-title">
-        <div className="example-side-bar-title-icon">
-          <ExampleIcon size="32px" color="#cfcfcf" />
-        </div>
-        <div className="example-side-bar-title-text">
-          <ExampleSkeleton size="1.5rem" color="#cfcfcf" chars="5" lines="1" />
-        </div>
-      </div>
-      <ul className="example-side-bar-list">
-        <ExampleSideBarLink chars="4" />
-        <ExampleSideBarLink chars="9" />
-        <ExampleSideBarLink chars="7" />
-        <ExampleSideBarLink chars="8" />
-        <ExampleSideBarLink chars="8" />
-        <ExampleSideBarLink chars="5" />
-        <ExampleSideBarLink chars="8" />
-        <ExampleSideBarLink chars="9" />
-        <ExampleSideBarLink chars="8" />
-        <ExampleSideBarLink chars="4" />
-      </ul>
-    </aside>
-  );
-}
-
 function ExampleOffCanvas() {
   const [expandOffcanvas, setExpandOffcanvas] = useState(false);
 
   return (
     <div className="example-offcanvas-container">
-      <ExampleSideBar expanded={expandOffcanvas} />
+      <Sidebar expanded={expandOffcanvas} />
       <div className="example-offcanvas-screen">
         <ExampleTopBar
           hamburgerActive={expandOffcanvas}
