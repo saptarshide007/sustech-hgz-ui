@@ -3,18 +3,15 @@ import { FaTimes, FaBars, FaMicrosoft, FaBahai } from "react-icons/fa";
 import styles from "./Sidebar.module.css";
 
 const Sidebar = (props) => {
+  const hamburgerClick = props.hamburgerClick;
+  const hamburgerActive = props.hamburgerActive;
+  let hamburgerClassName = "example-hamburger-menu";
   return (
     <aside
       className={`${styles["side-bar"]} ${
         props.expanded && `${styles["side-bar-expanded"]}`
       }`}
     >
-      <div className={`${styles["side-bar-title"]}`}>
-        <div className={`${styles["side-bar-title-icon"]}`}></div>
-        <div className={`${styles["side-bar-title-text"]}`}>
-          <ExampleSkeleton title="MENU" />
-        </div>
-      </div>
       <SideBarItems
         permissionList={props.permissionList}
         expanded={props.expanded}
