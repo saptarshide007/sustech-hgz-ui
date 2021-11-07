@@ -6,7 +6,7 @@
   animation: animate-skeleton 2048ms ease-in-out infinite;
 }
 .skeleton span {
-  font-weight: bold;
+  font-weight: 550;
   font-size: 0.9rem;
   padding: 8px 40px 5px 5px;
   display: inline-block;
