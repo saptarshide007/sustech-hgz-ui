@@ -15,7 +15,10 @@ const Sidebar = (props) => {
           <ExampleSkeleton title="MENU" />
         </div>
       </div>
-      <SideBarItems permissionList={props.permissionList} />
+      <SideBarItems
+        permissionList={props.permissionList}
+        expanded={props.expanded}
+      />
     </aside>
   );
 };
@@ -24,19 +27,15 @@ const SideBarItems = (props) => {
   return (
     <ul className={`${styles["side-bar-list"]}`}>
       {props.permissionList.map((permission) => (
-        <ExampleSideBarLink sideBarItem={permission} />
+        <SideBarLink sideBarItem={permission} expanded={props.expanded} />
       ))}
     </ul>
   );
 };
-function ExampleIcon(props) {
+function Icon(props) {
   const size = props.size;
   const color = props.color;
-  return (
-    <div>
-      <FaMicrosoft />
-    </div>
-  );
+  return <FaMicrosoft />;
 }
 function ExampleSkeleton(props) {
   return (
@@ -45,7 +44,7 @@ function ExampleSkeleton(props) {
     </div>
   );
 }
-function ExampleSideBarLink(props) {
+function SideBarLink(props) {
   return (
     <li>
       <a
@@ -53,12 +52,18 @@ function ExampleSideBarLink(props) {
         className={`${styles["side-bar-link"]}`}
         onClick={() => false}
       >
-        <span className={`${styles["side-bar-link-icon"]}`}>
+        <span
+          className={`${styles["side-bar-link-icon"]} ${
+            props.expanded && `${styles["side-link-expanded"]}`
+          }`}
+        >
           <div>
-            <ExampleIcon />
+            <Icon />
           </div>
         </span>
-        <ExampleSkeleton title={props.sideBarItem} />
+        <div className={`${styles["skeleton"]}`}>
+          <span>{props.sideBarItem}</span>
+        </div>
       </a>
     </li>
   );

@@ -71,12 +71,9 @@
 }
 .side-bar-link-icon div {
   margin-right: 10px;
-  font-size: 12px;
   width: 30px;
   height: 30px;
-  line-height: 30px;
   text-align: center;
-  border-radius: 4px;
   background-color: #3a3f48;
   color: #6c7b88;
 }
