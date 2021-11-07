@@ -12,13 +12,7 @@ const Sidebar = (props) => {
       <div className={`${styles["side-bar-title"]}`}>
         <div className={`${styles["side-bar-title-icon"]}`}></div>
         <div className={`${styles["side-bar-title-text"]}`}>
-          <ExampleSkeleton
-            size="1.5rem"
-            color="#cfcfcf"
-            chars="5"
-            lines="1"
-            title="MENU"
-          />
+          <ExampleSkeleton title="MENU" />
         </div>
       </div>
       <SideBarItems permissionList={props.permissionList} />
@@ -61,10 +55,10 @@ function ExampleSideBarLink(props) {
       >
         <span className={`${styles["side-bar-link-icon"]}`}>
           <div>
-            <ExampleIcon size="16px" color="#f2f2f2" />
+            <ExampleIcon />
           </div>
         </span>
-        <ExampleSkeleton color="#f2f2f2" lines="1" title={props.sideBarItem} />
+        <ExampleSkeleton title={props.sideBarItem} />
       </a>
     </li>
   );

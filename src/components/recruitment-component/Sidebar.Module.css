@@ -1,8 +1,4 @@
 .skeleton {
-  --size: 1rem;
-  background-color: var(--color);
-  width: calc(var(--size) * var(--chars));
-  height: calc(var(--size) * var(--lines));
   margin-bottom: 0.75rem;
   display: inline-block;
   overflow: hidden;
