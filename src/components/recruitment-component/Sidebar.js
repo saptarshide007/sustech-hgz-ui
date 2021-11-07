@@ -12,28 +12,32 @@ const Sidebar = (props) => {
       <div className={`${styles["side-bar-title"]}`}>
         <div className={`${styles["side-bar-title-icon"]}`}></div>
         <div className={`${styles["side-bar-title-text"]}`}>
-          <ExampleSkeleton size="1.5rem" color="#cfcfcf" chars="5" lines="1" />
+          <ExampleSkeleton
+            size="1.5rem"
+            color="#cfcfcf"
+            chars="5"
+            lines="1"
+            title="MENU"
+          />
         </div>
       </div>
-      <ul className={`${styles["side-bar-list"]}`}>
-        <ExampleSideBarLink chars="4" />
-        <ExampleSideBarLink chars="9" />
-        <ExampleSideBarLink chars="7" />
-        <ExampleSideBarLink chars="8" />
-        <ExampleSideBarLink chars="8" />
-        <ExampleSideBarLink chars="5" />
-        <ExampleSideBarLink chars="8" />
-        <ExampleSideBarLink chars="9" />
-        <ExampleSideBarLink chars="8" />
-        <ExampleSideBarLink chars="4" />
-      </ul>
+      <SideBarItems permissionList={props.permissionList} />
     </aside>
+  );
+};
+const SideBarItems = (props) => {
+  console.log(props.permissionList);
+  return (
+    <ul className={`${styles["side-bar-list"]}`}>
+      {props.permissionList.map((permission) => (
+        <ExampleSideBarLink sideBarItem={permission} />
+      ))}
+    </ul>
   );
 };
 function ExampleIcon(props) {
   const size = props.size;
   const color = props.color;
-
   return (
     <div>
       <FaMicrosoft />
@@ -41,28 +45,13 @@ function ExampleIcon(props) {
   );
 }
 function ExampleSkeleton(props) {
-  const size = props.size;
-  const color = props.color;
-  const chars = props.chars;
-  const lines = props.lines;
-  const width = props.width;
-
   return (
-    <div
-      className={`${styles["skeleton"]}`}
-      style={{
-        "--size": size,
-        "--color": color,
-        "--chars": chars,
-        "--lines": lines,
-        width: width,
-      }}
-    ></div>
+    <div className={`${styles["skeleton"]}`}>
+      <span>{props.title}</span>
+    </div>
   );
 }
 function ExampleSideBarLink(props) {
-  const chars = props.chars;
-
   return (
     <li>
       <a
@@ -71,9 +60,11 @@ function ExampleSideBarLink(props) {
         onClick={() => false}
       >
         <span className={`${styles["side-bar-link-icon"]}`}>
-          <ExampleIcon size="16px" color="#f2f2f2" />
+          <div>
+            <ExampleIcon size="16px" color="#f2f2f2" />
+          </div>
         </span>
-        <ExampleSkeleton color="#f2f2f2" chars={chars} lines="1" />
+        <ExampleSkeleton color="#f2f2f2" lines="1" title={props.sideBarItem} />
       </a>
     </li>
   );
