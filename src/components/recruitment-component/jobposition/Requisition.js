@@ -7,8 +7,13 @@ import {
   CloseButton,
   Placeholder,
 } from "react-bootstrap";
+import ReactScrollableList from "react-scrollable-list"
 import styles from "./Requisition.module.css";
+import Skill from "./Skill";
+import React, { useRef } from 'react';
+
 const Requisition = () => {
+  const arr=["Dashboard","Job"]
   return (
     <div className={`${styles["form-wrapper"]}`}>
       <div className={`${styles["form-card"]}`}>
@@ -17,7 +22,7 @@ const Requisition = () => {
             <Form.Label column sm={2}>
               Position
             </Form.Label>
-            <Col sm={10}>
+            <Col sm={8}>
               <Form.Control type="text" placeholder="" />
             </Col>
           </Form.Group>
@@ -25,7 +30,7 @@ const Requisition = () => {
             <Form.Label column sm={2}>
               Type
             </Form.Label>
-            <Col sm={10}>
+            <Col sm={8}>
               <Form.Control type="text" placeholder="" />
             </Col>
           </Form.Group>
@@ -33,15 +38,20 @@ const Requisition = () => {
             <Form.Label column sm={2}>
               Skills
             </Form.Label>
-            <Col sm={5}>
+            <Col sm={4}>
               <Form.Control type="text" placeholder="" />
             </Col>
-            <Col sm={5}>
+            <Col sm={1}>
               <Button variant="success" size="md">
                 Add
               </Button>
             </Col>
+            <Col sm={2}>
+              <Skill/>
+            </Col>
+
           </Form.Group>
+
           <Form.Group
             as={Row}
             className="mb-3"
