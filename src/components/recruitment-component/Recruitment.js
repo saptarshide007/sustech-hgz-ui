@@ -1,13 +1,12 @@
-@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
+import Sidebar from "./Sidebar";
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import Topbar from "./Topbar";
 import {Zoom,Fade,Roll} from 'react-reveal';
 
 const Recruitment = () => {
-  const permissionList = [
-@ -14,14 +15,18 @@ const Recruitment = () => {
   const [expandOffcanvas, setExpandOffcanvas] = useState(false);
+  const permissionList=["Dashboard","Job"]
   return (
     <div className="example-offcanvas-container">
       <Fade left>
@@ -25,3 +24,4 @@ const Recruitment = () => {
       </div>
     </div>
   );
+        }

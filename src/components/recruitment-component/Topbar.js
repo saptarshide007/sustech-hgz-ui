@@ -1,9 +1,12 @@
-@ -1,3 +1,4 @@
-import React from "react";
 const Topbar = (props) => {
   const hamburgerClick = props.hamburgerClick;
   const hamburgerActive = props.hamburgerActive;
-@ -10,11 +11,7 @@ const Topbar = (props) => {
+
+  let hamburgerClassName = "example-hamburger-menu";
+
+  if (hamburgerActive) {
+    hamburgerClassName += " example-hamburger-menu-active";
+  }
 
   return (
     <nav className="example-top-bar">
@@ -12,25 +15,44 @@ const Topbar = (props) => {
         <span></span>
         <span></span>
       </button>
-      <TopBar hamburgerClassName={hamburgerClassName} hamburgerClick={hamburgerClick}></TopBar>
       <div className="example-search-box">
         <input type="search" className="example-search-input" />
         <button type="button" className="example-search-button">
-@ -34,6 +31,17 @@ const Topbar = (props) => {
+          <span className="example-search-button-icon"></span>
+        </button>
+      </div>
+      <div className="example-top-bar-left-links">
+        <ExampleTopBarLink />
+        <ExampleTopBarLink />
+      </div>
+      <div className="example-top-bar-right-links">
+        <ExampleTopBarLink />
+        <ExampleTopBarLink />
+        <ExampleTopBarLink />
+        <ExampleTopBarLink />
+      </div>
     </nav>
   );
 };
-
-const TopBar=(props)=>{
-  return (      
-  <React.Fragment>
-  <button className={props.hamburgerClassName} onClick={props.hamburgerClick}>
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-  </React.Fragment>);
-}
 function ExampleTopBarLink() {
   return (
     <a href="#" className="example-top-bar-link" onClick={() => false}>
+      <ExampleIcon size="24px" color="#f2f2f2" />
+    </a>
+  );
+}
+function ExampleIcon(props) {
+  const size = props.size;
+  const color = props.color;
+
+  return (
+    <i
+      className="example-icon"
+      style={{
+        "--size": size,
+        "--color": color,
+      }}
+    ></i>
+  );
+}
+export default Topbar;
