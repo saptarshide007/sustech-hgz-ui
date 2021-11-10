@@ -1,0 +1,10 @@
+.form-wrapper {
+  width: 1000px;
+  height: 500px;
+  box-shadow: 9px 5px 15px 5px #d6d6d6;
+  border-radius: 10px;
+}
+
+.form-wrapper .form-card {
+  width: 900px;
+}
