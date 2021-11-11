@@ -1,11 +1,16 @@
 .form-wrapper {
   width: 1000px;
-  height: 700px;
   box-shadow: 9px 5px 15px 5px #d6d6d6;
   border-radius: 10px;
+  height: 100%;
+  padding: 1%;
 }
 
 .form-wrapper .form-card {
   width: 1000px;
   padding: 15px;
+}
+
+.form-wrapper .nav-form {
+  position: relative;
 }

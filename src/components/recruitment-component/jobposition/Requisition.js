@@ -1,108 +1,58 @@
-import {
-  FloatingLabel,
-  Form,
-  Row,
-  Col,
-  Button,
-  CloseButton,
-  Placeholder,
-} from "react-bootstrap";
-import ReactScrollableList from "react-scrollable-list"
+import { ProgressBar, Stack } from "react-bootstrap";
 import styles from "./Requisition.module.css";
-import Skill from "./Skill";
-import React, { useRef } from 'react';
+import React, { useState } from "react";
+import PositionForm from "./class/PositionForm";
+
+import { ToolTipButton } from "../utility/Button";
 
 const Requisition = () => {
-  const arr=["Dashboard","Job"]
+  const [activeForm, setActiveForm] = useState(PositionForm.getActive());
+  const [activeBtn, setBtnState] = useState([
+    PositionForm.hasPrevious(),
+    PositionForm.hasNext(),
+  ]);
+
+  const [progress, setProgress] = useState(0);
+  const [progressBar, setProgressBar] = useState("warning");
+  const toggleFormHandler = (event) => {
+    if (event.target.innerText === ">") {
+      setActiveForm(PositionForm.getNext());
+      setBtnState([PositionForm.hasPrevious(), PositionForm.hasNext()]);
+      setProgress(progress + 25);
+      if (progress >= 75) setProgressBar("success");
+    } else {
+      setActiveForm(PositionForm.getPrevious());
+      setBtnState([PositionForm.hasPrevious(), PositionForm.hasNext()]);
+      setProgress(progress - 25);
+      if (progressBar === "success") setProgressBar("warning");
+    }
+  };
   return (
     <div className={`${styles["form-wrapper"]}`}>
-      <div className={`${styles["form-card"]}`}>
-        <Form>
-          <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
-            <Form.Label column sm={2}>
-              Position
-            </Form.Label>
-            <Col sm={8}>
-              <Form.Control type="text" placeholder="" />
-            </Col>
-          </Form.Group>
-          <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
-            <Form.Label column sm={2}>
-              Type
-            </Form.Label>
-            <Col sm={8}>
-              <Form.Control type="text" placeholder="" />
-            </Col>
-          </Form.Group>
-          <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
-            <Form.Label column sm={2}>
-              Skills
-            </Form.Label>
-            <Col sm={4}>
-              <Form.Control type="text" placeholder="" />
-            </Col>
-            <Col sm={1}>
-              <Button variant="success" size="md">
-                Add
-              </Button>
-            </Col>
-            <Col sm={2}>
-              <Skill/>
-            </Col>
-
-          </Form.Group>
-
-          <Form.Group
-            as={Row}
-            className="mb-3"
-            controlId="formHorizontalPassword"
-          >
-            <Form.Label column sm={2}>
-              Password
-            </Form.Label>
-            <Col sm={10}>
-              <Form.Control type="password" placeholder="Password" />
-            </Col>
-          </Form.Group>
-          <fieldset>
-            <Form.Group as={Row} className="mb-3">
-              <Form.Label as="legend" column sm={2}>
-                Radios
-              </Form.Label>
-              <Col sm={10}>
-                <Form.Check
-                  type="radio"
-                  label="first radio"
-                  name="formHorizontalRadios"
-                  id="formHorizontalRadios1"
-                />
-                <Form.Check
-                  type="radio"
-                  label="second radio"
-                  name="formHorizontalRadios"
-                  id="formHorizontalRadios2"
-                />
-                <Form.Check
-                  type="radio"
-                  label="third radio"
-                  name="formHorizontalRadios"
-                  id="formHorizontalRadios3"
-                />
-              </Col>
-            </Form.Group>
-          </fieldset>
-          <Form.Group as={Row} className="mb-3" controlId="formHorizontalCheck">
-            <Col sm={{ span: 10, offset: 2 }}>
-              <Form.Check label="Remember me" />
-            </Col>
-          </Form.Group>
-
-          <Form.Group as={Row} className="mb-3">
-            <Col sm={{ span: 10, offset: 2 }}>
-              <Button type="submit">Sign in</Button>
-            </Col>
-          </Form.Group>
-        </Form>
+      <ProgressBar variant={progressBar} animated now={progress} />
+      <div className={`${styles["form-card"]}`}>{activeForm}</div>
+      <div className={`${styles["nav-form"]}`}>
+        <Stack direction="horizontal" gap={3} className="col-md-2 mx-auto">
+          <ToolTipButton
+            variant="primary"
+            size="md"
+            btnname="<"
+            msg="PreviousForm"
+            placement="left"
+            onClick={toggleFormHandler}
+            active={activeBtn[0]}
+          />
+          <div className="vr" />
+          <ToolTipButton
+            variant="primary"
+            size="md"
+            btnname=">"
+            msg="NextForm"
+            placement="right"
+            onClick={toggleFormHandler}
+            active={activeBtn[1]}
+          />
+        </Stack>
       </div>
     </div>
   );
