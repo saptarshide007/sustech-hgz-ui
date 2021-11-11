@@ -6,7 +6,8 @@ import DatePicker from "react-date-picker";
 import { Fade } from "react-reveal";
 
 const BasicForm = () => {
-  const [value, onChange] = useState(new Date());
+  const [startDate, onStartDateChange] = useState(new Date());
+  const [endDate, onEndDateChange] = useState(new Date());
   return (
     <Fade>
       <Form>
@@ -35,13 +36,13 @@ const BasicForm = () => {
               <div class={`${styles["date-picker"]}`}>
                 <Stack gap={3}>
                   <div>
-                    <DatePicker onChange={onChange} value={value} />{" "}
+                    <DatePicker onChange={onStartDateChange} value={startDate} />{" "}
                     <Badge pill bg="success">
                       StartTime
                     </Badge>
                   </div>
                   <div>
-                    <DatePicker onChange={onChange} value={value} />{" "}
+                    <DatePicker onChange={onEndDateChange} value={endDate} />{" "}
                     <Badge pill bg="danger">
                       EndTime
                     </Badge>

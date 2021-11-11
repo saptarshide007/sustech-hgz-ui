@@ -7,6 +7,10 @@ import {
 } from "react-bootstrap";
 
 export const ToolTipButton = (props) => {
+  
+  const handleClick = () => {
+    props.onClick(props.msg);
+  }
   if (props.active)
     return (
       <OverlayTrigger
@@ -19,9 +23,9 @@ export const ToolTipButton = (props) => {
         <Button
           variant={props.variant}
           size={props.size}
-          onClick={props.onClick}
+          onClick={handleClick}
         >
-          <strong>{props.btnname}</strong>
+          {props.btnname}
         </Button>
       </OverlayTrigger>
     );
@@ -30,7 +34,6 @@ export const ToolTipButton = (props) => {
       <Button
         variant={props.variant}
         size={props.size}
-        onClick={props.onClick}
         disabled
       >
         {props.btnname}
