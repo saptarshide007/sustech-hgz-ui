@@ -2,31 +2,53 @@ import styles from "./SkillList.module.css";
 import { Fade } from "react-reveal";
 import { ToolTipButton } from "../../utility/Button";
 import { RiDeleteBin5Line } from "react-icons/ri";
-
+import { BsFillTrashFill, BsFillCircleFill, BsCheckLg } from "react-icons/bs";
+import {
+  Card,
+  CardGroup,
+  Button,
+  ToggleButton,
+  Dropdown,
+} from "react-bootstrap";
+import { useState } from "react";
 const Box = (props) => {
-
+  const [checked, setChecked] = useState(false);
+  const [radioValue, setRadioValue] = useState("1");
   return (
-<Fade left>
-        <div className={`${styles["box"]}`}>
-          <div className={`${styles["box__inner"]}`} >
-            {/* <h2 className={`${styles["box__heading"]}`}>{props.value} </h2> */}
-  <table data-table>
-  <tbody>
-    <tr id="unique_id_1">
-      <td>July 2015 Newsletter</td>
-      <td>6/14/2015</td>
-      <td>
-        <a href="#" onclick="view('unique_id_1')" data-caption="View"><RiDeleteBin5Line/><i class="ion-eye"></i></a>
-        <a href="#" onclick="edit('unique_id_1')" data-caption="Edit"><i class="ion-edit"></i></a>
-        <a href="#" onclick="duplicate('unique_id_1')" data-caption="Duplicate"><i class="ion-ios-copy"></i></a>
-        <a href="#" data-delete data-caption="Delete"><i class="ion-close"></i></a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <Fade left>
+      <div className={`${styles["box"]}`}>
+        <div className={`${styles["box__inner"]}`}>
+          <div className={`${styles["btn-size"]}`}>
+            <Dropdown className="d-inline mx-2" autoClose={false}>
+              <Dropdown.Toggle id="dropdown-autoclose-false">
+                Manual Close
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item href="#">Menu Item</Dropdown.Item>
+                <Dropdown.Item href="#">Menu Item</Dropdown.Item>
+                <Dropdown.Item href="#">Menu Item</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            <ToggleButton
+              className="mb-0"
+              id="toggle-check"
+              type="checkbox"
+              variant="outline-success"
+              checked={checked}
+              value="1"
+              onChange={(e) => setChecked(e.currentTarget.checked)}
+              size="sm"
+            >
+              <BsCheckLg />
+            </ToggleButton>{" "}
+            <Button variant="danger" size="sm">
+              <BsFillTrashFill />
+            </Button>
           </div>
         </div>
-        </Fade>
+      </div>
+    </Fade>
   );
 };
 
@@ -34,7 +56,7 @@ const SkillList = (props) => {
   return (
     <div className={`${styles["skill-list-wrapper"]}`}>
       {props.list.map((k) => (
-        <Box key={k} value={k}/>
+        <Box key={k} value={k} />
       ))}
     </div>
   );

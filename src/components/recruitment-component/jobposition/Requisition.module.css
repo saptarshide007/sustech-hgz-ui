@@ -13,8 +13,8 @@
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .form-wrapper .form-card {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 .form-wrapper .form-card {
   overflow: auto;
@@ -26,20 +26,19 @@
   margin-left: 70px;
   margin-right: 40px;
   border-radius: 10px;
-  background-color:white;
+  background-color: white;
   /* border: solid; */
   /* box-shadow: 18px 18px 20px #edf0f1, -18px -18px 20px #f7f4f4; */
   /* border-width: thin; */
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-font-size: 15px;
-letter-spacing: -0.4px;
-word-spacing: 1px;
-color: #000000;
-font-weight: 700;
-text-decoration: none solid rgb(68, 68, 68);
-font-style: normal;
-font-variant: small-caps;
-text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: -0.4px;
+  word-spacing: 1px;
+  color: #000000;
+  font-weight: 700;
+  text-decoration: none solid rgb(68, 68, 68);
+  font-style: normal;
+  font-variant: small-caps;
+  text-transform: uppercase;
 }
 
 .form-wrapper .nav-form {
