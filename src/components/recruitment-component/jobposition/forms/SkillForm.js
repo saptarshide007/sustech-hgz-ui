@@ -1,4 +1,4 @@
-import { Button, Form, Row, Col, Tooltip, Stack } from "react-bootstrap";
+import { Button, Form, Row, Col, Stack } from "react-bootstrap";
 import SkillList from "./SkillList";
 import React, { useState } from "react";
 import { Fade } from "react-reveal";
@@ -6,9 +6,9 @@ import Select from "react-select";
 import { IoIosCreate } from "react-icons/io";
 import { ToolTipButton } from "../../utility/Button";
 import CreateType from "./secondaryforms/CreateType";
+
 let i=0;
 const SkillForm = () => {
-  const arr = ["Dashboard", "Job"];
   
   const [modalShow, setModalShow] = React.useState(false);
   const [skillList, addSkill] = useState([]);
@@ -73,7 +73,7 @@ const SkillForm = () => {
           </Form.Group>
           <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
             <Col sm={2}>
-              <SkillList list={skillList} />
+            <SkillList list={skillList} />
             </Col>
           </Form.Group>
         </Form>

@@ -1,57 +1,77 @@
 import styles from "./SkillList.module.css";
 import { Fade } from "react-reveal";
-import { ToolTipButton } from "../../utility/Button";
-import { RiDeleteBin5Line } from "react-icons/ri";
-import { BsFillTrashFill, BsFillCircleFill, BsCheckLg } from "react-icons/bs";
+
+import { BsFillTrashFill, BsCheckLg } from "react-icons/bs";
+
 import {
-  Card,
-  CardGroup,
   Button,
   ToggleButton,
-  Dropdown,
+  OverlayTrigger,
+  Tooltip,
 } from "react-bootstrap";
 import { useState } from "react";
-const Box = (props) => {
+
+const TipOnHover=(props)=>{
+return (  <OverlayTrigger
+  key={props.key}
+  placement={props.placement}
+  overlay={
+    <Tooltip>{props.tip}</Tooltip>
+  }
+>
+{props.children}
+</OverlayTrigger>)
+}
+
+const MandatoryMarker=(props)=>{
   const [checked, setChecked] = useState(false);
-  const [radioValue, setRadioValue] = useState("1");
+  return (
+    <TipOnHover
+    key="weight"
+    placement="top"
+    tip={checked?"SetNonMandatory":"SetMandatory"}>
+  <ToggleButton
+    className="mb-0"
+    id={props.value}
+    type="checkbox"
+    variant="outline-success"
+    checked={checked}
+    value="1"
+    onChange={(e) => setChecked(e.currentTarget.checked)}
+    size="md"
+  >
+    <BsCheckLg />
+  </ToggleButton>
+  </TipOnHover>);
+}
+
+const Box = (props) => {
   return (
     <Fade left>
       <div className={`${styles["box"]}`}>
         <div className={`${styles["box__inner"]}`}>
+        <h1>
+    {props.value}
+  </h1>
+        <TipOnHover key="weight" placement="top" tip="Weight">
+        <input type="number" id="quantity" name="quantity" min="1" max="10" defaultValue="1" className={`${styles["weight-input"]}`}/ >
+        </TipOnHover>
           <div className={`${styles["btn-size"]}`}>
-            <Dropdown className="d-inline mx-2" autoClose={false}>
-              <Dropdown.Toggle id="dropdown-autoclose-false">
-                Manual Close
-              </Dropdown.Toggle>
 
-              <Dropdown.Menu>
-                <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-                <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-                <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <ToggleButton
-              className="mb-0"
-              id="toggle-check"
-              type="checkbox"
-              variant="outline-success"
-              checked={checked}
-              value="1"
-              onChange={(e) => setChecked(e.currentTarget.checked)}
-              size="sm"
-            >
-              <BsCheckLg />
-            </ToggleButton>{" "}
-            <Button variant="danger" size="sm">
+            <MandatoryMarker value={props.value}/>
+            
+            {" "}
+            <TipOnHover key="weight" placement="top" tip="Delete">
+            <Button variant="danger" size="md">
               <BsFillTrashFill />
             </Button>
+            </TipOnHover>
           </div>
         </div>
       </div>
     </Fade>
   );
 };
-
 const SkillList = (props) => {
   return (
     <div className={`${styles["skill-list-wrapper"]}`}>
@@ -61,5 +81,4 @@ const SkillList = (props) => {
     </div>
   );
 };
-
 export default SkillList;
