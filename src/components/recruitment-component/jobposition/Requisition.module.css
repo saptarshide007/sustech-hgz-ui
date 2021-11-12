@@ -2,17 +2,26 @@
   width: 1000px;
   box-shadow: 9px 5px 15px 5px #d6d6d6;
   border-radius: 10px;
-  height: 700px;
+  height: 90vh;
   padding: 1%;
+  margin-top: 20px;
 }
 
 .form-wrapper .form-card {
-  width: 1000px;
-  padding: 15px;
+  width: 840px;
+  height: 70vh;
+  padding: 30px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 70px;
+  margin-right: 40px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #1773e3;
+  background: #f8f9fa;
 }
 
 .form-wrapper .nav-form {
-  position: absolute;
-    bottom: 6;
-  
+  position: fixed;
+  top: 250px;
 }

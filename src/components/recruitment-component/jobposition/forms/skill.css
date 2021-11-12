@@ -6,7 +6,7 @@
 
 .app {
   overflow-y: scroll;
-  width: 15em;
+  width: 48em;
   height: 15em;
   position: relative;
   padding: 0.5em;
@@ -73,4 +73,5 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: sans-serif;
 }

@@ -4,7 +4,10 @@ import React, { useState } from "react";
 import PositionForm from "./class/PositionForm";
 
 import { ToolTipButton } from "../utility/Button";
-import { BsFillArrowLeftCircleFill,BsFillArrowRightCircleFill } from "react-icons/bs";
+import {
+  BsFillArrowLeftCircleFill,
+  BsFillArrowRightCircleFill,
+} from "react-icons/bs";
 
 const Requisition = () => {
   const [activeForm, setActiveForm] = useState(PositionForm.getActive());
@@ -30,29 +33,29 @@ const Requisition = () => {
   };
   return (
     <div className={`${styles["form-wrapper"]}`}>
-      <ProgressBar variant={progressBar} animated now={progress} />
       <div className={`${styles["form-card"]}`}>{activeForm}</div>
       <div className={`${styles["nav-form"]}`}>
-          <ToolTipButton
-            variant="outline-primary"
-            size="lg"
-            btnname={<BsFillArrowLeftCircleFill/>}
-            msg="PreviousForm"
-            placement="left"
-            onClick={toggleFormHandler}
-            active={activeBtn[0]}
-          />
-          <span style={{display:"inline-block", width:"870px"}}/>
-          <ToolTipButton
-            variant="outline-primary"
-            size="lg"
-            btnname={<BsFillArrowRightCircleFill/>}
-            msg="NextForm"
-            placement="right"
-            onClick={toggleFormHandler}
-            active={activeBtn[1]}
-          />
+        <ToolTipButton
+          variant="outline-primary"
+          size="lg"
+          btnname={<BsFillArrowLeftCircleFill />}
+          msg="PreviousForm"
+          placement="left"
+          onClick={toggleFormHandler}
+          active={activeBtn[0]}
+        />
+        <span style={{ display: "inline-block", width: "870px" }} />
+        <ToolTipButton
+          variant="outline-primary"
+          size="lg"
+          btnname={<BsFillArrowRightCircleFill />}
+          msg="NextForm"
+          placement="right"
+          onClick={toggleFormHandler}
+          active={activeBtn[1]}
+        />
       </div>
+      <ProgressBar variant={progressBar} animated now={progress} />
     </div>
   );
 };
