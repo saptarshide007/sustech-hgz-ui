@@ -2,23 +2,44 @@
   width: 1000px;
   box-shadow: 9px 5px 15px 5px #d6d6d6;
   border-radius: 10px;
-  height: 90vh;
+  height: 95vh;
   padding: 1%;
   margin-top: 20px;
+  background-color: white;
+}
+.form-wrapper .form-card::-webkit-scrollbar {
+  display: none;
 }
 
+/* Hide scrollbar for IE, Edge and Firefox */
 .form-wrapper .form-card {
-  width: 840px;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.form-wrapper .form-card {
+  overflow: auto;
+  width: 900px;
   height: 70vh;
   padding: 30px;
-  margin-top: 40px;
+  margin-top: 50px;
   margin-bottom: 40px;
   margin-left: 70px;
   margin-right: 40px;
   border-radius: 10px;
-  border-style: solid;
-  border-color: #1773e3;
-  background: #f8f9fa;
+  background-color:white;
+  /* border: solid; */
+  /* box-shadow: 18px 18px 20px #edf0f1, -18px -18px 20px #f7f4f4; */
+  /* border-width: thin; */
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-size: 15px;
+letter-spacing: -0.4px;
+word-spacing: 1px;
+color: #000000;
+font-weight: 700;
+text-decoration: none solid rgb(68, 68, 68);
+font-style: normal;
+font-variant: small-caps;
+text-transform: uppercase;
 }
 
 .form-wrapper .nav-form {

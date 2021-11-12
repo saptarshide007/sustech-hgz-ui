@@ -1,13 +1,15 @@
 import { Button, Form, Row, Col, Tooltip, Stack } from "react-bootstrap";
-import Skill from "./Skill";
+import SkillList from "./SkillList";
 import React, { useState } from "react";
 import { Fade } from "react-reveal";
 import Select from "react-select";
 import { IoIosCreate } from "react-icons/io";
 import { ToolTipButton } from "../../utility/Button";
 import CreateType from "./secondaryforms/CreateType";
+let i=0;
 const SkillForm = () => {
   const arr = ["Dashboard", "Job"];
+  
   const [modalShow, setModalShow] = React.useState(false);
   const [skillList, addSkill] = useState([]);
   const [jobTypeList, addJobType] = useState([
@@ -15,7 +17,8 @@ const SkillForm = () => {
   ]);
   const addNewSkills = (props) => {
     addSkill((prevSkill) => {
-      return ["skill", ...prevSkill];
+      i=i+1;
+      return ["skill"+i, ...prevSkill];
     });
     console.log(skillList);
   };
@@ -39,11 +42,11 @@ const SkillForm = () => {
       <Fade>
         <Form>
           <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
-            <Form.Label column sm={2}>
+            <Form.Label column sm={3}>
               Select Skills:
             </Form.Label>
-            <Col sm={5}>
-              <Stack direction="horizontal" gap={3}>
+            <Col sm={6}>
+              <Stack direction="horizontal" gap={4}>
                 <div style={{ width: "400px" }}>
                   <Select options={jobTypeList} />
                 </div>
@@ -70,7 +73,7 @@ const SkillForm = () => {
           </Form.Group>
           <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
             <Col sm={2}>
-              <Skill list={skillList} />
+              <SkillList list={skillList} />
             </Col>
           </Form.Group>
         </Form>

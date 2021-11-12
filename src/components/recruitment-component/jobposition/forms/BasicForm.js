@@ -1,6 +1,6 @@
 import { FloatingLabel, Form, Row, Col, Badge, Stack } from "react-bootstrap";
 import styles from "./Basic.module.css";
-import Skill from "./Skill";
+import Skill from "./SkillList";
 import React, { useState } from "react";
 import DatePicker from "react-date-picker";
 import { Fade } from "react-reveal";
@@ -8,6 +8,7 @@ import Select from "react-select";
 import { IoIosCreate } from "react-icons/io";
 import { ToolTipButton } from "../../utility/Button";
 import CreateType from "./secondaryforms/CreateType";
+import SkillForm from "./SkillForm";
 const BasicForm = () => {
   const [startDate, onStartDateChange] = useState(new Date());
   const [endDate, onEndDateChange] = useState(new Date());
@@ -28,6 +29,18 @@ const BasicForm = () => {
             >
               <Form.Label column sm={3}>
                 Position:
+              </Form.Label>
+              <Col sm={5}>
+                <Form.Control type="text" placeholder="" />
+              </Col>
+            </Form.Group>
+            <Form.Group
+              as={Row}
+              className="mb-4"
+              controlId="formHorizontalEmail"
+            >
+              <Form.Label column sm={3}>
+                Description:
               </Form.Label>
               <Col sm={5}>
                 <Form.Control type="text" placeholder="" />
@@ -90,15 +103,16 @@ const BasicForm = () => {
                 </div>
               </Col>
             </Form.Group>
-            <Form.Group
+            {/* <Form.Group
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label>Description:</Form.Label>
+              <Form.Label>Comments:</Form.Label>
               <Form.Control as="textarea" rows={3} style={{ width: "100%" }} />
-            </Form.Group>
+            </Form.Group> */}
           </div>
         </Form>
+        <SkillForm/>
       </Fade>
       <CreateType show={modalShow} onHide={() => setModalShow(false)} />
     </React.Fragment>
