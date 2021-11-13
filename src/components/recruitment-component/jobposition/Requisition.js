@@ -47,7 +47,7 @@ const Requisition = () => {
           onClick={toggleFormHandler}
           active={activeBtn[0]}
         />
-        <span style={{ display: "inline-block", width: "870px" }} />
+        <span style={{ display: "inline-block", width: "893px" }} />
         <ToolTipButton
           variant="outline-primary"
           size="lg"

@@ -3,28 +3,27 @@
   box-shadow: 9px 5px 15px 5px #d6d6d6;
   border-radius: 10px;
   height: 95vh;
-  padding: 1%;
-  margin-top: 20px;
-  background-color: white;
+  align-items: center;
+  background: linear-gradient(15deg, #d33f34 50%, #a61322 50.1%);
 }
-.form-wrapper .form-card::-webkit-scrollbar {
+/* .form-wrapper .form-card::-webkit-scrollbar {
   display: none;
-}
+} */
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.form-wrapper .form-card {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
+
+/* .form-wrapper .form-card {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+} */
 .form-wrapper .form-card {
   overflow: auto;
   width: 900px;
   height: 70vh;
   padding: 30px;
   margin-top: 50px;
-  margin-bottom: 40px;
-  margin-left: 70px;
-  margin-right: 40px;
+  margin-bottom: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
   border-radius: 10px;
   background-color: white;
   font-size: 15px;
@@ -40,8 +39,7 @@
 
 .form-wrapper .nav-form {
   position: fixed;
-  top: 250px;
-  z-index: -1;
+  top: 75px;
 }
 
 .page-title {

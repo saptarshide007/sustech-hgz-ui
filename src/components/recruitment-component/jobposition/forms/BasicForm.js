@@ -104,8 +104,9 @@ const BasicForm = () => {
               </Col>
             </Form.Group>
           </div>
+          <SkillForm />
         </Form>
-        <SkillForm />
+        
       </Fade>
       <CreateType show={modalShow} onHide={() => setModalShow(false)} />
     </React.Fragment>
