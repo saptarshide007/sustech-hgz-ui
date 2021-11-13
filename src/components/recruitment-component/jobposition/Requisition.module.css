@@ -4,12 +4,11 @@
   border-radius: 10px;
   height: 95vh;
   align-items: center;
-  background: linear-gradient(15deg, #d33f34 50%, #a61322 50.1%);
+  /* background: linear-gradient(15deg, #d33f34 50%, #a61322 50.1%); */
 }
 /* .form-wrapper .form-card::-webkit-scrollbar {
   display: none;
 } */
-
 
 /* .form-wrapper .form-card {
   -ms-overflow-style: none;
@@ -19,7 +18,9 @@
   overflow: auto;
   width: 900px;
   height: 70vh;
-  padding: 30px;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 10px;
   margin-top: 50px;
   margin-bottom: 50px;
   margin-left: 50px;
@@ -32,9 +33,6 @@
   color: #000000;
   font-weight: 700;
   text-decoration: none solid rgb(68, 68, 68);
-  /* font-style: normal;
-  font-variant: small-caps;
-  text-transform: uppercase; */
 }
 
 .form-wrapper .nav-form {

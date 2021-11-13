@@ -32,12 +32,8 @@ const Requisition = () => {
     }
   };
   return (
-    <div className={`${styles["form-wrapper"]}`}>
-      <h4 className={`${styles["page-title"]}`}>Create Job Position</h4>
-
-      <ProgressBar variant={progressBar} animated now={progress} />
-      <div className={`${styles["form-card"]}`}>{activeForm}</div>
-      <div className={`${styles["nav-form"]}`}>
+    <React.Fragment>
+      <div style={{ position: "absolute" }}>
         <ToolTipButton
           variant="outline-primary"
           size="lg"
@@ -47,7 +43,7 @@ const Requisition = () => {
           onClick={toggleFormHandler}
           active={activeBtn[0]}
         />
-        <span style={{ display: "inline-block", width: "893px" }} />
+        <span style={{ display: "inline-block", width: "1001px" }} />
         <ToolTipButton
           variant="outline-primary"
           size="lg"
@@ -58,7 +54,14 @@ const Requisition = () => {
           active={activeBtn[1]}
         />
       </div>
-    </div>
+      <div className={`${styles["form-wrapper"]}`}>
+        <h4 className={`${styles["page-title"]}`}>Create Job Position</h4>
+
+        <ProgressBar variant={progressBar} animated now={progress} />
+        <div className={`${styles["form-card"]}`}>{activeForm}</div>
+        <div className={`${styles["nav-form"]}`}></div>
+      </div>
+    </React.Fragment>
   );
 };
 export default Requisition;
