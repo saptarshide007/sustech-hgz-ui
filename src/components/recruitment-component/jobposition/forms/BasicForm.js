@@ -103,16 +103,9 @@ const BasicForm = () => {
                 </div>
               </Col>
             </Form.Group>
-            {/* <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
-              <Form.Label>Comments:</Form.Label>
-              <Form.Control as="textarea" rows={3} style={{ width: "100%" }} />
-            </Form.Group> */}
           </div>
         </Form>
-        <SkillForm/>
+        <SkillForm />
       </Fade>
       <CreateType show={modalShow} onHide={() => setModalShow(false)} />
     </React.Fragment>

@@ -27,21 +27,27 @@
   margin-right: 40px;
   border-radius: 10px;
   background-color: white;
-  /* border: solid; */
-  /* box-shadow: 18px 18px 20px #edf0f1, -18px -18px 20px #f7f4f4; */
-  /* border-width: thin; */
   font-size: 15px;
   letter-spacing: -0.4px;
   word-spacing: 1px;
   color: #000000;
   font-weight: 700;
   text-decoration: none solid rgb(68, 68, 68);
-  font-style: normal;
+  /* font-style: normal;
   font-variant: small-caps;
-  text-transform: uppercase;
+  text-transform: uppercase; */
 }
 
 .form-wrapper .nav-form {
   position: fixed;
   top: 250px;
+  z-index: -1;
+}
+
+.page-title {
+  font-weight: 100;
+  margin: 0 0 15px 0;
+  font-size: 36px;
+  text-align: center;
+  font-family: sans-serif;
 }

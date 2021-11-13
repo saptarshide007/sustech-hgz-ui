@@ -33,7 +33,9 @@ const Requisition = () => {
   };
   return (
     <div className={`${styles["form-wrapper"]}`}>
-      <h1>Heading</h1>
+      <h4 className={`${styles["page-title"]}`}>Create Job Position</h4>
+
+      <ProgressBar variant={progressBar} animated now={progress} />
       <div className={`${styles["form-card"]}`}>{activeForm}</div>
       <div className={`${styles["nav-form"]}`}>
         <ToolTipButton
@@ -56,7 +58,6 @@ const Requisition = () => {
           active={activeBtn[1]}
         />
       </div>
-      <ProgressBar variant={progressBar} animated now={progress} />
     </div>
   );
 };
