@@ -8,7 +8,7 @@ import { IoIosCreate } from "react-icons/io";
 import { ToolTipButton } from "../../utility/Button";
 import CreateType from "./secondaryforms/CreateType";
 import SkillForm from "./SkillForm";
-const BasicForm = () => {
+const BasicForm = (props) => {
   const [startDate, onStartDateChange] = useState(new Date());
   const [endDate, onEndDateChange] = useState(new Date());
 
@@ -103,7 +103,10 @@ const BasicForm = () => {
               </Col>
             </Form.Group>
           </div>
-          <SkillForm />
+          <SkillForm
+            skillList={props.skillList}
+            addSkill={(skill) => props.addSkill(skill)}
+          />
         </Form>
       </Fade>
       <CreateType show={modalShow} onHide={() => setModalShow(false)} />

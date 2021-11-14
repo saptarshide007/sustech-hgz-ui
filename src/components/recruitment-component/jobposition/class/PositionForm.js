@@ -4,8 +4,24 @@ import React, { useState } from "react";
 class PositionForm extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      skillList: [
+        { label: "None", value: "None", mandatory: false, weight: 0 },
+      ],
+    };
+    const addSkill = (skill) => {
+      this.setState({
+        skillList: skill,
+      });
+    };
+    console.log(props);
     this.formList = [
-      <BasicForm />,
+      <BasicForm
+        skillList={this.state.skillList}
+        addSkill={(skill) => {
+          addSkill(skill);
+        }}
+      />,
       <SkillForm />,
       <BasicForm />,
       <SkillForm />,
@@ -41,4 +57,4 @@ class PositionForm extends React.Component {
   }
 }
 
-export default new PositionForm();
+export default new PositionForm("fdgfd", "fggdgdg");

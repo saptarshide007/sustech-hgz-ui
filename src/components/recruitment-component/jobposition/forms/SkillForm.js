@@ -4,18 +4,15 @@ import SelectorTypeForm from "./SelectorTypeForm";
 let i = 0;
 const SkillForm = (props) => {
   const addNewSkillsHandler = () => {
-    props.addSkill((prevSkill) => {
-      i = i + 1;
-      return [
-        {
-          label: "skill" + i,
-          value: "skill" + i,
-          mandatory: false,
-          weight: 0,
-        },
-        ...prevSkill,
-      ];
-    });
+    props.addSkill([
+      {
+        label: "skill" + i,
+        value: "skill" + i,
+        mandatory: false,
+        weight: 0,
+      },
+      ...props.skillList,
+    ]);
   };
   return (
     <React.Fragment>
