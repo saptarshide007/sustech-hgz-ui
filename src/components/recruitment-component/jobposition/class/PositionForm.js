@@ -1,7 +1,9 @@
 import BasicForm from "../forms/BasicForm";
 import SkillForm from "../forms/SkillForm";
-class PositionForm {
-  constructor(formList, activeForm) {
+import React, { useState } from "react";
+class PositionForm extends React.Component {
+  constructor(props) {
+    super(props);
     this.formList = [
       <BasicForm />,
       <SkillForm />,

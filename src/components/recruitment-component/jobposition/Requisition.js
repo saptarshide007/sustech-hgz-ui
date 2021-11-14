@@ -1,5 +1,5 @@
-import { ProgressBar, Stack } from "react-bootstrap";
-import styles from "./Requisition.module.css";
+import { ProgressBar } from "react-bootstrap";
+import styles from "./css/Requisition.module.css";
 import React, { useState } from "react";
 import PositionForm from "./class/PositionForm";
 
@@ -14,6 +14,9 @@ const Requisition = () => {
   const [activeBtn, setBtnState] = useState([
     PositionForm.hasPrevious(),
     PositionForm.hasNext(),
+  ]);
+  const [skillList, addSkill] = useState([
+    { label: "None", value: "None", mandatory: false, weight: 0 },
   ]);
 
   const [progress, setProgress] = useState(0);

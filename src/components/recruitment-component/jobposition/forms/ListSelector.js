@@ -1,4 +1,4 @@
-import styles from "./SkillList.module.css";
+import styles from "./css/SkillList.module.css";
 import { Fade } from "react-reveal";
 
 import { BsFillTrashFill, BsCheckLg } from "react-icons/bs";
@@ -57,6 +57,11 @@ const Box = (props) => {
               max="10"
               defaultValue="1"
               className={`${styles["weight-input"]}`}
+              onChange={(event) => {
+                console.log("--------------");
+                console.log(props.list);
+                props.object.weight = event.target.value;
+              }}
             />
           </TipOnHover>
           <div className={`${styles["btn-size"]}`}>
@@ -72,13 +77,13 @@ const Box = (props) => {
     </Fade>
   );
 };
-const SkillList = (props) => {
+const ListSelector = (props) => {
   return (
     <div className={`${styles["skill-list-wrapper"]}`}>
       {props.list.map((k) => (
-        <Box key={k} value={k} />
+        <Box key={k.label} value={k.label} object={k} />
       ))}
     </div>
   );
 };
-export default SkillList;
+export default ListSelector;

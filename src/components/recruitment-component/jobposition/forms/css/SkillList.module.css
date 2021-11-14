@@ -15,7 +15,7 @@
 .skill-list-wrapper {
   overflow-y: scroll;
   width: 48em;
-  height: 13em;
+  height: 30vh;
   position: relative;
   padding: 0.5em;
   border: 1px solid #eaeaea;

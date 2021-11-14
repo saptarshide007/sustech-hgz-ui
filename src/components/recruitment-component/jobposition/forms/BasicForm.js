@@ -1,6 +1,5 @@
-import { FloatingLabel, Form, Row, Col, Badge, Stack } from "react-bootstrap";
-import styles from "./Basic.module.css";
-import Skill from "./SkillList";
+import { Form, Row, Col, Badge, Stack } from "react-bootstrap";
+import styles from "./css/Basic.module.css";
 import React, { useState } from "react";
 import DatePicker from "react-date-picker";
 import { Fade } from "react-reveal";
@@ -106,7 +105,6 @@ const BasicForm = () => {
           </div>
           <SkillForm />
         </Form>
-        
       </Fade>
       <CreateType show={modalShow} onHide={() => setModalShow(false)} />
     </React.Fragment>
