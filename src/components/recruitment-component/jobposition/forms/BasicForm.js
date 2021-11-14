@@ -103,10 +103,7 @@ const BasicForm = (props) => {
               </Col>
             </Form.Group>
           </div>
-          <SkillForm
-            skillList={props.skillList}
-            addSkill={(skill) => props.addSkill(skill)}
-          />
+          <SkillForm skillList={props.skillList} addSkills={props.addSkills} />
         </Form>
       </Fade>
       <CreateType show={modalShow} onHide={() => setModalShow(false)} />
