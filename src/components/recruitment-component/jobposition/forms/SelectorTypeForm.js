@@ -6,7 +6,8 @@ import Select from "react-select";
 import { IoIosCreate } from "react-icons/io";
 import { ToolTipButton } from "../../utility/Button";
 import CreateSkill from "./secondaryforms/CreateSkill";
-
+import CreateCertification from "./secondaryforms/CreateCertification";
+import CreateQualification from "./secondaryforms/CreateQualification";
 const SelectorTypeForm = (props) => {
   const [selectedSkill, setSelectedSkill] = useState("");
   const [modalShow, setModalShow] = useState(false);
@@ -14,6 +15,7 @@ const SelectorTypeForm = (props) => {
     setSelectedSkill(selectedOption.label);
   };
   const addHandler = () => {
+    if(selectedSkill!=="")
     props.addSelectedItemHandler(selectedSkill);
   };
   const ButtonElement = (props) => {
@@ -31,6 +33,26 @@ const SelectorTypeForm = (props) => {
       );
     }
   };
+  const SecondaryForm=(props)=>{
+    if(props.form==="Certification")
+      return <CreateCertification
+      show={modalShow}
+      onHide={() => setModalShow(false)}
+      onAddHandler={props.onAddHandler}
+    />
+    if(props.form==="Qualification")
+      return <CreateQualification
+      show={modalShow}
+      onHide={() => setModalShow(false)}
+      onAddHandler={props.onAddHandler}
+    />
+    if(props.form==="Skill")
+      return <CreateSkill
+      show={modalShow}
+      onHide={() => setModalShow(false)}
+      onAddHandler={props.onAddHandler}
+    />
+  }
   return (
     <React.Fragment>
       <Fade>
@@ -78,10 +100,9 @@ const SelectorTypeForm = (props) => {
           </Form.Group>
         </Form>
       </Fade>
-      <CreateSkill
-        show={modalShow}
-        onHide={() => setModalShow(false)}
+      <SecondaryForm
         onAddHandler={props.createNewItemHandler}
+        form={props.secondaryForm}
       />
     </React.Fragment>
   );

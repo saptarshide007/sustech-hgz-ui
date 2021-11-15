@@ -2,10 +2,10 @@ class SkillListData {
   constructor(skillList) {
     this.skillList = ["DataScience", "Java", "Angular"];
   }
-  getSkillList() {
+  getList() {
     return this.skillList;
   }
-  addSkill(skill) {
+  add(skill) {
     this.skillList.push(skill);
   }
 }
@@ -13,10 +13,10 @@ class JobTypeListData {
   constructor(jobType) {
     this.jobType = ["IT", "Mechanical", "Civil"];
   }
-  getTypeList() {
+  getList() {
     return this.jobType;
   }
-  addType(type) {
+  add(type) {
     this.jobType.push(type);
   }
 }
@@ -25,10 +25,10 @@ class CertificationListData {
   constructor(certification) {
     this.certification = ["AWS", "Oracle8", "Java11"];
   }
-  getCertList() {
+  getList() {
     return this.certification;
   }
-  addCert(cert) {
+  add(cert) {
     this.certification.push(cert);
   }
 }
@@ -37,11 +37,11 @@ class QualificationListData {
   constructor(qualification) {
     this.qualification = ["10th", "12th", "BE", "BTech", "B.Sc"];
   }
-  getQualificationList() {
+  getList() {
     return this.qualification;
   }
-  addQualification(credential) {
-    this.certification.push(credential);
+  add(credential) {
+    this.qualification.push(credential);
   }
 }
 export const SkillData = new SkillListData();

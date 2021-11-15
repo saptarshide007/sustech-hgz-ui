@@ -16,7 +16,11 @@ const BasicForm = (props) => {
   const [type, setType] = useState(props.formData.type);
   const [modalShow, setModalShow] = useState(false);
   const [selectSkillList, setSelectSkillList] = useState(props.formData.skills);
+  const skillSelected=[];
   const addSelectedSkills = (newSkill) => {
+    if(!selectSkillList.map((k)=>k.value).includes(newSkill))
+  {
+    console.log(skillSelected);
     setSelectSkillList((prevList) => {
       return [
         { label: newSkill, value: newSkill, mandatory: false, weight: 0 },
@@ -29,6 +33,7 @@ const BasicForm = (props) => {
       mandatory: false,
       weight: 0,
     });
+  }
   };
 
   const handleTypeChange = (selectedOption) => {
@@ -158,6 +163,7 @@ const BasicForm = (props) => {
             selectedItemList={selectSkillList}
             createNewItemHandler={props.addNewSkill}
             addSelectedItemHandler={addSelectedSkills}
+            secondaryForm={"Skill"}
           />
         </Form>
       </Fade>

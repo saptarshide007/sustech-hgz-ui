@@ -1,4 +1,4 @@
-import styles from "./css/SkillList.module.css";
+import styles from "./css/ListSelector.module.css";
 import { Fade } from "react-reveal";
 
 import { BsFillTrashFill, BsCheckLg } from "react-icons/bs";
@@ -47,7 +47,10 @@ const Box = (props) => {
     <Fade left>
       <div className={`${styles["box"]}`}>
         <div className={`${styles["box__inner"]}`}>
-          <h1>{props.value}</h1>
+          <div className={`${styles["title"]}`}>
+            <p>{props.value}</p>
+          </div>
+          <div className={`${styles["action"]}`}>
           <TipOnHover key="weight" placement="top" tip="Weight">
             <input
               type="number"
@@ -62,13 +65,14 @@ const Box = (props) => {
               }}
             />
           </TipOnHover>
-          <div className={`${styles["btn-size"]}`}>
+          <div>
             <MandatoryMarker value={props.value} />{" "}
             <TipOnHover key="weight" placement="top" tip="Delete">
               <Button variant="danger" size="md">
                 <BsFillTrashFill />
               </Button>
             </TipOnHover>
+          </div>
           </div>
         </div>
       </div>

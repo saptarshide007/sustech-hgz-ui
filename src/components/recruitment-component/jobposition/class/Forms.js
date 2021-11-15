@@ -18,16 +18,26 @@ const formData = {
   qualification: [],
 };
 const Forms = (props) => {
-  const [skillList, setSkills] = useState(SkillData.getSkillList());
-  const [typeList, setType] = useState(JobTypeData.getTypeList());
+  const [skillList, setSkills] = useState(SkillData.getList());
+  const [typeList, setType] = useState(JobTypeData.getList());
+  const [certList, setCert] = useState(CertData.getList());
+  const [qualificationList, setQualification] = useState(QualificationData.getList());
 
   const addNewType = (type) => {
-    JobTypeData.addType(type);
-    setType(JobTypeData.getTypeList());
+    JobTypeData.add(type);
+    setType(JobTypeData.getList());
   };
   const addNewSkill = (skill) => {
-    SkillData.addSkill(skill);
-    setSkills(SkillData.getSkillList());
+    SkillData.add(skill);
+    setSkills(SkillData.getList());
+  };
+  const addNewCert = (cert) => {
+    CertData.add(cert);
+    setCert(CertData.getList());
+  };
+  const addNewQualification = (qualification) => {
+    QualificationData.add(qualification);
+    setQualification(QualificationData.getList());
   };
   if (props.form === 1)
     return (
@@ -42,8 +52,10 @@ const Forms = (props) => {
   if (props.form === 2)
     return (
       <CredentialForm
-        typeList={typeList}
-        addNewType={addNewType}
+        certList={certList}
+        qualificationList={qualificationList}
+        addNewCert={addNewCert}
+        addNewQualification={addNewQualification}
         formData={formData}
       />
     );
