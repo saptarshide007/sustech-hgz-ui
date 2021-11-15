@@ -5,12 +5,17 @@ import { Fade } from "react-reveal";
 import Select from "react-select";
 import { IoIosCreate } from "react-icons/io";
 import { ToolTipButton } from "../../utility/Button";
-import CreateType from "./secondaryforms/CreateType";
+import CreateSkill from "./secondaryforms/CreateSkill";
 
-let i = 0;
 const SelectorTypeForm = (props) => {
+  const [selectedSkill, setSelectedSkill] = useState("");
   const [modalShow, setModalShow] = useState(false);
-
+  const handleChange = (selectedOption) => {
+    setSelectedSkill(selectedOption.label);
+  };
+  const addHandler = () => {
+    props.addSelectedSkills(selectedSkill);
+  };
   const ButtonElement = (props) => {
     if (props.disabled) {
       return (
@@ -37,12 +42,18 @@ const SelectorTypeForm = (props) => {
             <Col sm={6}>
               <Stack direction="horizontal" gap={4}>
                 <div style={{ width: "400px" }}>
-                  <Select options={props.list} />
+                  <Select
+                    onChange={handleChange}
+                    options={props.skillList.map((value) => ({
+                      label: value,
+                      value: value,
+                    }))}
+                  />
                 </div>
                 <ButtonElement
                   msg="Add"
                   disabled={false}
-                  clickHandler={props.addHandler}
+                  clickHandler={addHandler}
                 />
               </Stack>
             </Col>
@@ -62,12 +73,16 @@ const SelectorTypeForm = (props) => {
           </Form.Group>
           <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
             <Col sm={2}>
-              <ListSelector list={props.list} />
+              <ListSelector list={props.selectSkillList} />
             </Col>
           </Form.Group>
         </Form>
       </Fade>
-      <CreateType show={modalShow} onHide={() => setModalShow(false)} />
+      <CreateSkill
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        onAddHandler={props.addNewSkill}
+      />
     </React.Fragment>
   );
 };

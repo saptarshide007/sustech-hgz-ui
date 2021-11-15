@@ -7,7 +7,7 @@ import Select from "react-select";
 import { IoIosCreate } from "react-icons/io";
 import { ToolTipButton } from "../../utility/Button";
 import CreateType from "./secondaryforms/CreateType";
-import SkillForm from "./SkillForm";
+import SelectorTypeForm from "./SelectorTypeForm";
 const BasicForm = (props) => {
   const [startDate, onStartDateChange] = useState(new Date());
   const [endDate, onEndDateChange] = useState(new Date());
@@ -103,7 +103,13 @@ const BasicForm = (props) => {
               </Col>
             </Form.Group>
           </div>
-          <SkillForm skillList={props.skillList} addSkills={props.addSkills} />
+          <SelectorTypeForm
+            title="Select Skills"
+            skillList={props.skillList}
+            selectSkillList={props.selectSkillList}
+            addNewSkill={props.addNewSkill}
+            addSelectedSkills={props.addSelectedSkills}
+          />
         </Form>
       </Fade>
       <CreateType show={modalShow} onHide={() => setModalShow(false)} />
