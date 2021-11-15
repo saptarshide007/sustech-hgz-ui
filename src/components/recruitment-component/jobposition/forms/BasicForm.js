@@ -11,11 +11,30 @@ import SelectorTypeForm from "./SelectorTypeForm";
 const BasicForm = (props) => {
   const [startDate, onStartDateChange] = useState(new Date());
   const [endDate, onEndDateChange] = useState(new Date());
-
+  const [position, setPosition] = useState(props.formData.position);
+  const [description, setDescription] = useState(props.formData.description);
+  const [type, setType] = useState(props.formData.type);
   const [modalShow, setModalShow] = useState(false);
-  const [jobTypeList, addJobType] = useState([
-    { label: "None", value: "None", code: "dsd" },
-  ]);
+  const handleTypeChange = (selectedOption) => {
+    formChangeHandler(3,selectedOption.label);
+  };
+  const formChangeHandler=(id,value)=>{
+    if(id==1) 
+    {
+      setPosition(value);
+      props.formData.position=value;
+    }
+    if(id==2) 
+    {
+      setDescription(value);
+      props.formData.description=value;
+    }
+    if(id==3)
+    {
+      setType(value);
+      props.formData.type=value
+    }
+  };
   return (
     <React.Fragment>
       <Fade>
@@ -30,7 +49,7 @@ const BasicForm = (props) => {
                 Position:
               </Form.Label>
               <Col sm={5}>
-                <Form.Control type="text" placeholder="" />
+                <Form.Control type="input" placeholder="" onChange={(e)=>formChangeHandler(1,e.target.value)} value={position}/>
               </Col>
             </Form.Group>
             <Form.Group
@@ -42,7 +61,7 @@ const BasicForm = (props) => {
                 Description:
               </Form.Label>
               <Col sm={5}>
-                <Form.Control type="text" placeholder="" />
+                <Form.Control type="text" placeholder="" onChange={(e)=>formChangeHandler(2,e.target.value)} value={description}/>
               </Col>
             </Form.Group>
             <Form.Group
@@ -56,7 +75,13 @@ const BasicForm = (props) => {
               <Col sm={5}>
                 <Stack direction="horizontal" gap={3}>
                   <div style={{ width: "400px" }}>
-                    <Select options={jobTypeList} />
+                    <Select 
+                    onChange={handleTypeChange}
+                    value={{label: type, value: type}}
+                    options={props.typeList.map((value) => ({
+                      label: value,
+                      value: value,
+                    }))} />
                   </div>
                   <div>
                     <ToolTipButton

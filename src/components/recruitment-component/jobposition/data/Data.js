@@ -9,5 +9,18 @@ class SkillListData {
     this.skillList.push(skill);
   }
 }
+class JobTypeListData {
+  constructor(jobType) {
+    this.jobType = ["IT", "Mechanical", "Civil"];
+  }
+  getTypeList() {
+    return this.jobType;
+  }
+  addType(type) {
+    this.jobType.push(type);
+  }
+}
+
 
 export const SkillData = new SkillListData();
+export const JobTypeData = new JobTypeListData();
