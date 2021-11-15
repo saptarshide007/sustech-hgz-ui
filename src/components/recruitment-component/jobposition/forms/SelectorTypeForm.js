@@ -14,7 +14,7 @@ const SelectorTypeForm = (props) => {
     setSelectedSkill(selectedOption.label);
   };
   const addHandler = () => {
-    props.addSelectedSkills(selectedSkill);
+    props.addSelectedItemHandler(selectedSkill);
   };
   const ButtonElement = (props) => {
     if (props.disabled) {
@@ -44,7 +44,7 @@ const SelectorTypeForm = (props) => {
                 <div style={{ width: "400px" }}>
                   <Select
                     onChange={handleChange}
-                    options={props.skillList.map((value) => ({
+                    options={props.selectorList.map((value) => ({
                       label: value,
                       value: value,
                     }))}
@@ -73,7 +73,7 @@ const SelectorTypeForm = (props) => {
           </Form.Group>
           <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
             <Col sm={2}>
-              <ListSelector list={props.selectSkillList} />
+              <ListSelector list={props.selectedItemList} />
             </Col>
           </Form.Group>
         </Form>
@@ -81,7 +81,7 @@ const SelectorTypeForm = (props) => {
       <CreateSkill
         show={modalShow}
         onHide={() => setModalShow(false)}
-        onAddHandler={props.addNewSkill}
+        onAddHandler={props.createNewItemHandler}
       />
     </React.Fragment>
   );

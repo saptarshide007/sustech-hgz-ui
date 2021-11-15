@@ -58,8 +58,6 @@ const Box = (props) => {
               defaultValue="1"
               className={`${styles["weight-input"]}`}
               onChange={(event) => {
-                console.log("--------------");
-                console.log(props.list);
                 props.object.weight = event.target.value;
               }}
             />

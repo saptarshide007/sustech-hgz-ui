@@ -15,24 +15,37 @@ const BasicForm = (props) => {
   const [description, setDescription] = useState(props.formData.description);
   const [type, setType] = useState(props.formData.type);
   const [modalShow, setModalShow] = useState(false);
-  const handleTypeChange = (selectedOption) => {
-    formChangeHandler(3,selectedOption.label);
+  const [selectSkillList, setSelectSkillList] = useState(props.formData.skills);
+  const addSelectedSkills = (newSkill) => {
+    setSelectSkillList((prevList) => {
+      return [
+        { label: newSkill, value: newSkill, mandatory: false, weight: 0 },
+        ...prevList,
+      ];
+    });
+    props.formData.skills.push({
+      label: newSkill,
+      value: newSkill,
+      mandatory: false,
+      weight: 0,
+    });
   };
-  const formChangeHandler=(id,value)=>{
-    if(id==1) 
-    {
+
+  const handleTypeChange = (selectedOption) => {
+    formChangeHandler(3, selectedOption.label);
+  };
+  const formChangeHandler = (id, value) => {
+    if (id == 1) {
       setPosition(value);
-      props.formData.position=value;
+      props.formData.position = value;
     }
-    if(id==2) 
-    {
+    if (id == 2) {
       setDescription(value);
-      props.formData.description=value;
+      props.formData.description = value;
     }
-    if(id==3)
-    {
+    if (id == 3) {
       setType(value);
-      props.formData.type=value
+      props.formData.type = value;
     }
   };
   return (
@@ -49,7 +62,12 @@ const BasicForm = (props) => {
                 Position:
               </Form.Label>
               <Col sm={5}>
-                <Form.Control type="input" placeholder="" onChange={(e)=>formChangeHandler(1,e.target.value)} value={position}/>
+                <Form.Control
+                  type="input"
+                  placeholder=""
+                  onChange={(e) => formChangeHandler(1, e.target.value)}
+                  value={position}
+                />
               </Col>
             </Form.Group>
             <Form.Group
@@ -61,7 +79,12 @@ const BasicForm = (props) => {
                 Description:
               </Form.Label>
               <Col sm={5}>
-                <Form.Control type="text" placeholder="" onChange={(e)=>formChangeHandler(2,e.target.value)} value={description}/>
+                <Form.Control
+                  type="text"
+                  placeholder=""
+                  onChange={(e) => formChangeHandler(2, e.target.value)}
+                  value={description}
+                />
               </Col>
             </Form.Group>
             <Form.Group
@@ -75,13 +98,14 @@ const BasicForm = (props) => {
               <Col sm={5}>
                 <Stack direction="horizontal" gap={3}>
                   <div style={{ width: "400px" }}>
-                    <Select 
-                    onChange={handleTypeChange}
-                    value={{label: type, value: type}}
-                    options={props.typeList.map((value) => ({
-                      label: value,
-                      value: value,
-                    }))} />
+                    <Select
+                      onChange={handleTypeChange}
+                      value={{ label: type, value: type }}
+                      options={props.typeList.map((value) => ({
+                        label: value,
+                        value: value,
+                      }))}
+                    />
                   </div>
                   <div>
                     <ToolTipButton
@@ -130,10 +154,10 @@ const BasicForm = (props) => {
           </div>
           <SelectorTypeForm
             title="Select Skills"
-            skillList={props.skillList}
-            selectSkillList={props.selectSkillList}
-            addNewSkill={props.addNewSkill}
-            addSelectedSkills={props.addSelectedSkills}
+            selectorList={props.skillList}
+            selectedItemList={selectSkillList}
+            createNewItemHandler={props.addNewSkill}
+            addSelectedItemHandler={addSelectedSkills}
           />
         </Form>
       </Fade>

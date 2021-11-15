@@ -21,6 +21,30 @@ class JobTypeListData {
   }
 }
 
+class CertificationListData {
+  constructor(certification) {
+    this.certification = ["AWS", "Oracle8", "Java11"];
+  }
+  getCertList() {
+    return this.certification;
+  }
+  addCert(cert) {
+    this.certification.push(cert);
+  }
+}
 
+class QualificationListData {
+  constructor(qualification) {
+    this.qualification = ["10th", "12th", "BE", "BTech", "B.Sc"];
+  }
+  getQualificationList() {
+    return this.qualification;
+  }
+  addQualification(credential) {
+    this.certification.push(credential);
+  }
+}
 export const SkillData = new SkillListData();
 export const JobTypeData = new JobTypeListData();
+export const CertData = new CertificationListData();
+export const QualificationData = new QualificationListData();
