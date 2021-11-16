@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import BasicForm from "../forms/BasicForm";
+import DemographicForm from "../forms/DemographicForm";
 import {
   SkillData,
   JobTypeData,
@@ -21,7 +22,9 @@ const Forms = (props) => {
   const [skillList, setSkills] = useState(SkillData.getList());
   const [typeList, setType] = useState(JobTypeData.getList());
   const [certList, setCert] = useState(CertData.getList());
-  const [qualificationList, setQualification] = useState(QualificationData.getList());
+  const [qualificationList, setQualification] = useState(
+    QualificationData.getList()
+  );
 
   const addNewType = (type) => {
     JobTypeData.add(type);
@@ -56,6 +59,16 @@ const Forms = (props) => {
         qualificationList={qualificationList}
         addNewCert={addNewCert}
         addNewQualification={addNewQualification}
+        formData={formData}
+      />
+    );
+  if (props.form === 3)
+    return (
+      <DemographicForm
+        skillList={skillList}
+        addNewSkill={addNewSkill}
+        typeList={typeList}
+        addNewType={addNewType}
         formData={formData}
       />
     );

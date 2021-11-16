@@ -1,5 +1,5 @@
 import Forms from "./Forms";
-const totalForms = 2;
+const totalForms = 3;
 class PositionForm {
   constructor(formList, activeForm) {
     this.activeForm = 1;
@@ -16,7 +16,7 @@ class PositionForm {
     }
   }
   getNext() {
-    if (this.activeForm >= 2) return null;
+    if (this.activeForm >= totalForms) return null;
     else {
       this.activeForm = this.activeForm + 1;
       return <Forms form={this.activeForm} />;
@@ -27,7 +27,7 @@ class PositionForm {
     else return true;
   }
   hasNext() {
-    if (this.activeForm >= 2) return false;
+    if (this.activeForm >= totalForms) return false;
     else return true;
   }
 }
