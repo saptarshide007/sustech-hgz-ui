@@ -12,11 +12,15 @@ const formData = {
   position: "",
   description: "",
   type: "",
-  startDate: "",
-  endDate: "",
+  startDate: null,
+  endDate: null,
   skills: [],
   certification: [],
   qualification: [],
+  location: [],
+  workAuthorizaion: [],
+  financial: [],
+  roles: [],
 };
 const Forms = (props) => {
   const [skillList, setSkills] = useState(SkillData.getList());

@@ -9,48 +9,54 @@ import { ToolTipButton } from "../../utility/Button";
 import CreateType from "./secondaryforms/CreateType";
 import SelectorTypeForm from "./SelectorTypeForm";
 const BasicForm = (props) => {
-  const [startDate, onStartDateChange] = useState(new Date());
-  const [endDate, onEndDateChange] = useState(new Date());
-  const [position, setPosition] = useState(props.formData.position);
-  const [description, setDescription] = useState(props.formData.description);
-  const [type, setType] = useState(props.formData.type);
-  const [modalShow, setModalShow] = useState(false);
+  /*-------local form data--------*/
+  const [formDataPosition, setPosition] = useState(props.formData.position);
+  const [formDataDescription, setDescription] = useState(
+    props.formData.description
+  );
+  const [formDataType, setType] = useState(props.formData.type);
+  const [startDate, setStartDateChange] = useState(props.formData.startDate);
+  const [endDate, setEndDateChange] = useState(props.formData.endDate);
   const [selectSkillList, setSelectSkillList] = useState(props.formData.skills);
-  const skillSelected=[];
+  /*------------------------------*/
+  const [modalShow, setModalShow] = useState(false);
   const addSelectedSkills = (newSkill) => {
-    if(!selectSkillList.map((k)=>k.value).includes(newSkill))
-  {
-    console.log(skillSelected);
-    setSelectSkillList((prevList) => {
-      return [
-        { label: newSkill, value: newSkill, mandatory: false, weight: 0 },
-        ...prevList,
-      ];
-    });
-    props.formData.skills.push({
-      label: newSkill,
-      value: newSkill,
-      mandatory: false,
-      weight: 0,
-    });
-  }
+    if (!selectSkillList.map((k) => k.value).includes(newSkill)) {
+      setSelectSkillList((prevList) => {
+        return [
+          { label: newSkill, value: newSkill, mandatory: false, weight: 0 },
+          ...prevList,
+        ];
+      });
+      props.formData.skills.push({
+        label: newSkill,
+        value: newSkill,
+        mandatory: false,
+        weight: 0,
+      });
+    }
   };
 
   const handleTypeChange = (selectedOption) => {
     formChangeHandler(3, selectedOption.label);
   };
   const formChangeHandler = (id, value) => {
-    if (id == 1) {
-      setPosition(value);
-      props.formData.position = value;
-    }
-    if (id == 2) {
-      setDescription(value);
-      props.formData.description = value;
-    }
-    if (id == 3) {
-      setType(value);
-      props.formData.type = value;
+    switch (id) {
+      case 1:
+        setPosition(value);
+        props.formData.position = value;
+      case 2:
+        setDescription(value);
+        props.formData.description = value;
+      case 3:
+        setType(value);
+        props.formData.type = value;
+      case 4:
+        setStartDateChange(value);
+        props.formData.startDate = value;
+      case 5:
+        setEndDateChange(value);
+        props.formData.endDate = value;
     }
   };
   return (
@@ -58,11 +64,7 @@ const BasicForm = (props) => {
       <Fade>
         <Form>
           <div style={{ display: "block" }}>
-            <Form.Group
-              as={Row}
-              className="mb-4"
-              controlId="formHorizontalEmail"
-            >
+            <Form.Group as={Row} className="mb-4">
               <Form.Label column sm={3}>
                 Position:
               </Form.Label>
@@ -71,15 +73,11 @@ const BasicForm = (props) => {
                   type="input"
                   placeholder=""
                   onChange={(e) => formChangeHandler(1, e.target.value)}
-                  value={position}
+                  value={formDataPosition}
                 />
               </Col>
             </Form.Group>
-            <Form.Group
-              as={Row}
-              className="mb-4"
-              controlId="formHorizontalEmail"
-            >
+            <Form.Group as={Row} className="mb-4">
               <Form.Label column sm={3}>
                 Description:
               </Form.Label>
@@ -88,15 +86,11 @@ const BasicForm = (props) => {
                   type="text"
                   placeholder=""
                   onChange={(e) => formChangeHandler(2, e.target.value)}
-                  value={description}
+                  value={formDataDescription}
                 />
               </Col>
             </Form.Group>
-            <Form.Group
-              as={Row}
-              className="mb-4"
-              controlId="formHorizontalEmail"
-            >
+            <Form.Group as={Row} className="mb-4">
               <Form.Label column sm={3}>
                 Job Type:
               </Form.Label>
@@ -105,7 +99,7 @@ const BasicForm = (props) => {
                   <div style={{ width: "400px" }}>
                     <Select
                       onChange={handleTypeChange}
-                      value={{ label: type, value: type }}
+                      value={{ label: formDataType, value: formDataType }}
                       options={props.typeList.map((value) => ({
                         label: value,
                         value: value,
@@ -126,11 +120,7 @@ const BasicForm = (props) => {
                 </Stack>
               </Col>
             </Form.Group>
-            <Form.Group
-              as={Row}
-              className="mb-3"
-              controlId="formHorizontalEmail"
-            >
+            <Form.Group as={Row} className="mb-3">
               <Form.Label column sm={3}>
                 Requisition Period:
               </Form.Label>
@@ -139,7 +129,7 @@ const BasicForm = (props) => {
                   <Stack gap={3}>
                     <div>
                       <DatePicker
-                        onChange={onStartDateChange}
+                        onChange={(date) => formChangeHandler(4, date)}
                         value={startDate}
                       />{" "}
                       <Badge pill bg="success">
@@ -147,7 +137,10 @@ const BasicForm = (props) => {
                       </Badge>
                     </div>
                     <div>
-                      <DatePicker onChange={onEndDateChange} value={endDate} />{" "}
+                      <DatePicker
+                        onChange={(date) => formChangeHandler(5, date)}
+                        value={endDate}
+                      />{" "}
                       <Badge pill bg="danger">
                         EndTime
                       </Badge>
