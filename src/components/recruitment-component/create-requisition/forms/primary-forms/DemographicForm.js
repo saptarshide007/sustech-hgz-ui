@@ -4,21 +4,20 @@ import React, { useState } from "react";
 
 import { Fade } from "react-reveal";
 
-import CreateType from "./secondaryforms/CreateType";
-import SelectorTypeForm from "./SelectorTypeForm";
+import CreateType from "../secondary-forms/CreateType";
+import SelectorTypeForm from "../form-utility/SelectorTypeForm";
 import {
   CountryDropdown,
   RegionDropdown,
   CountryRegionData,
 } from "react-country-region-selector";
 const DemographicForm = (props) => {
-  const [startDate, onStartDateChange] = useState(new Date());
-  const [endDate, onEndDateChange] = useState(new Date());
+
   const [position, setPosition] = useState(props.formData.position);
   const [description, setDescription] = useState(props.formData.description);
-  const [type, setType] = useState(props.formData.type);
+
   const [modalShow, setModalShow] = useState(false);
-  const [selectSkillList, setSelectSkillList] = useState(props.formData.skills);
+  const [selectAuthList, setSelectAuthList] = useState(props.formData.workAuthorizaion);
   const [country, selectCountry] = useState("");
   const [region, selectRegion] = useState("");
   const RegionSelector = () => {
@@ -47,39 +46,29 @@ const DemographicForm = (props) => {
     );
   };
 
-  const addSelectedSkills = (newSkill) => {
-    if (!selectSkillList.map((k) => k.value).includes(newSkill)) {
-      setSelectSkillList((prevList) => {
+  const addSelectedWorkAuth = (newWorkAuth) => {
+    if (!selectAuthList.map((k) => k.value).includes(newWorkAuth)) {
+      setSelectAuthList((prevList) => {
         return [
-          { label: newSkill, value: newSkill, mandatory: false, weight: 0 },
+          { label: newWorkAuth, value: newWorkAuth, mandatory: false, weight: 0 },
           ...prevList,
         ];
       });
-      props.formData.skills.push({
-        label: newSkill,
-        value: newSkill,
+      props.formData.workAuthorizaion.push({
+        label: newWorkAuth,
+        value: newWorkAuth,
         mandatory: false,
         weight: 0,
       });
     }
   };
 
-  const handleTypeChange = (selectedOption) => {
-    formChangeHandler(3, selectedOption.label);
-  };
   const formChangeHandler = (id, value) => {
     if (id == 1) {
       setPosition(value);
       props.formData.position = value;
     }
-    if (id == 2) {
-      setDescription(value);
-      props.formData.description = value;
-    }
-    if (id == 3) {
-      setType(value);
-      props.formData.type = value;
-    }
+
   };
   return (
     <React.Fragment>
@@ -135,11 +124,11 @@ const DemographicForm = (props) => {
           </div>
           <SelectorTypeForm
             title="Work Authorization:"
-            selectorList={props.skillList}
-            selectedItemList={selectSkillList}
-            createNewItemHandler={props.addNewSkill}
-            addSelectedItemHandler={addSelectedSkills}
-            secondaryForm={"Skill"}
+            selectorList={props.workAuthList}
+            selectedItemList={selectAuthList}
+            createNewItemHandler={props.addNewWorkAuth}
+            addSelectedItemHandler={addSelectedWorkAuth}
+            secondaryForm={"WorkAuth"}
           />
         </Form>
       </Fade>

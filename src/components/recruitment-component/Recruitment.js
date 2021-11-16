@@ -1,11 +1,12 @@
 import Sidebar from "./Sidebar";
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
+import CreateAppList from "./create/CreateAppList";
 import Topbar from "./Topbar";
 import { Zoom, Fade, Roll } from "react-reveal";
+import "./Recruitment.css"
 const Recruitment = () => {
   const [expandOffcanvas, setExpandOffcanvas] = useState(false);
-  const permissionList = ["Dashboard", "Job"];
+  const permissionList = ["Dashboard", "Create"];
   return (
     <div className="example-offcanvas-container">
       <Fade left>
@@ -19,8 +20,11 @@ const Recruitment = () => {
               setExpandOffcanvas(!expandOffcanvas);
             }}
           />
+          
         </Fade>
+        <CreateAppList/>
       </div>
+      
     </div>
   );
 };

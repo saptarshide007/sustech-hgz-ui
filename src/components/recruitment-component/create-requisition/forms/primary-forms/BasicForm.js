@@ -1,13 +1,13 @@
 import { Form, Row, Col, Badge, Stack } from "react-bootstrap";
-import styles from "./css/Basic.module.css";
+import styles from "../css/Basic.module.css";
 import React, { useState } from "react";
 import DatePicker from "react-date-picker";
 import { Fade } from "react-reveal";
 import Select from "react-select";
 import { IoIosCreate } from "react-icons/io";
-import { ToolTipButton } from "../../utility/Button";
-import CreateType from "./secondaryforms/CreateType";
-import SelectorTypeForm from "./SelectorTypeForm";
+import { ToolTipButton } from "../../../utility/Button";
+import CreateType from "../secondary-forms/CreateType";
+import SelectorTypeForm from "../form-utility/SelectorTypeForm";
 const BasicForm = (props) => {
   /*-------local form data--------*/
   const [formDataPosition, setPosition] = useState(props.formData.position);
@@ -17,20 +17,20 @@ const BasicForm = (props) => {
   const [formDataType, setType] = useState(props.formData.type);
   const [startDate, setStartDateChange] = useState(props.formData.startDate);
   const [endDate, setEndDateChange] = useState(props.formData.endDate);
-  const [selectSkillList, setSelectSkillList] = useState(props.formData.skills);
+  const [selectRoleList, setSelectRoleList] = useState(props.formData.roles);
   /*------------------------------*/
   const [modalShow, setModalShow] = useState(false);
-  const addSelectedSkills = (newSkill) => {
-    if (!selectSkillList.map((k) => k.value).includes(newSkill)) {
-      setSelectSkillList((prevList) => {
+  const addSelectedRole = (newRole) => {
+    if (!selectRoleList.map((k) => k.value).includes(newRole)) {
+      setSelectRoleList((prevList) => {
         return [
-          { label: newSkill, value: newSkill, mandatory: false, weight: 0 },
+          { label: newRole, value: newRole, mandatory: false, weight: 0 },
           ...prevList,
         ];
       });
-      props.formData.skills.push({
-        label: newSkill,
-        value: newSkill,
+      props.formData.roles.push({
+        label: newRole,
+        value: newRole,
         mandatory: false,
         weight: 0,
       });
@@ -151,12 +151,12 @@ const BasicForm = (props) => {
             </Form.Group>
           </div>
           <SelectorTypeForm
-            title="Select Skills"
-            selectorList={props.skillList}
-            selectedItemList={selectSkillList}
-            createNewItemHandler={props.addNewSkill}
-            addSelectedItemHandler={addSelectedSkills}
-            secondaryForm={"Skill"}
+            title="Roles & Responsibilities:"
+            selectorList={props.roleList}
+            selectedItemList={selectRoleList}
+            createNewItemHandler={props.addNewRole}
+            addSelectedItemHandler={addSelectedRole}
+            secondaryForm={"Role"}
           />
         </Form>
       </Fade>

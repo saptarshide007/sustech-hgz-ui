@@ -1,7 +1,7 @@
 import { ProgressBar } from "react-bootstrap";
 import styles from "./css/Requisition.module.css";
 import React, { useState } from "react";
-import PositionForm from "./class/PositionForm";
+import PositionForm from "./forms/PositionForm"
 
 import { ToolTipButton } from "../utility/Button";
 import {

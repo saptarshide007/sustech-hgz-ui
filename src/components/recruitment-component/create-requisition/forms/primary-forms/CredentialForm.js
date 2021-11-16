@@ -1,14 +1,31 @@
 import { Form } from "react-bootstrap";
 import React, { useState } from "react";
 import { Fade } from "react-reveal";
-import SelectorTypeForm from "./SelectorTypeForm";
+import SelectorTypeForm from "../form-utility/SelectorTypeForm";
 const CredentialForm = (props) => {
   /*-------local form data--------*/
   const [selectCertList, setCertList] = useState(props.formData.certification);
+  const [selectSkillList, setSelectSkillList] = useState(props.formData.skills);
   const [selectQualificationList, setSelectQualificationlList] = useState(
     props.formData.qualification
   );
   /*------------------------------*/
+  const addSelectedSkills = (newSkill) => {
+    if (!selectSkillList.map((k) => k.value).includes(newSkill)) {
+      setSelectSkillList((prevList) => {
+        return [
+          { label: newSkill, value: newSkill, mandatory: false, weight: 0 },
+          ...prevList,
+        ];
+      });
+      props.formData.skills.push({
+        label: newSkill,
+        value: newSkill,
+        mandatory: false,
+        weight: 0,
+      });
+    }
+  };
   const addSelectedCert = (newCert) => {
     if (!selectCertList.map((k) => k.value).includes(newCert)) {
       setCertList((prevList) => {
@@ -52,6 +69,14 @@ const CredentialForm = (props) => {
     <React.Fragment>
       <Fade>
         <Form>
+        <SelectorTypeForm
+            title="Select Skills"
+            selectorList={props.skillList}
+            selectedItemList={selectSkillList}
+            createNewItemHandler={props.addNewSkill}
+            addSelectedItemHandler={addSelectedSkills}
+            secondaryForm={"Skill"}
+          />
           <SelectorTypeForm
             title="Select Certificaion:"
             selectorList={props.certList}

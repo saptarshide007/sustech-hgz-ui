@@ -1,4 +1,3 @@
-@@ -0,0 +1,62 @@
 import "./AppList.css"
 class Post {
     constructor(title, img) {

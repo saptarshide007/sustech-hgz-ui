@@ -7,14 +7,16 @@ div#app {
 
   div#app .wrapper {
     display: flex;
-    max-width: 800px;
+    max-width: 1400px;
     flex-wrap: wrap;
     padding-top: 12px;
+    
   }
   div#app .card {
     box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
     width: 220px;
     margin: 12px;
+   
     transition: 0.15s all ease-in-out;
     
   }
@@ -25,7 +27,7 @@ div#app {
     text-decoration: none;
     padding: 12px;
     color: #03A9F4;
-    font-size: 24px;
+    font-size: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;

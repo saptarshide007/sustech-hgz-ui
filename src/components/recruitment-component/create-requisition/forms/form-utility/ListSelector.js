@@ -1,4 +1,4 @@
-import styles from "./css/ListSelector.module.css";
+import styles from "../css/ListSelector.module.css";
 import { Fade } from "react-reveal";
 
 import { BsFillTrashFill, BsCheckLg } from "react-icons/bs";
@@ -60,16 +60,16 @@ const Box = (props) => {
               max="10"
               defaultValue="1"
               className={`${styles["weight-input"]}`}
-              onChange={(event) => {
-                props.object.weight = event.target.value;
-              }}
+              onChange={(e)=>console.log(e.target.value)
+              }
             />
           </TipOnHover>
           <div>
             <MandatoryMarker value={props.value} />{" "}
             <TipOnHover key="weight" placement="top" tip="Delete">
-              <Button variant="danger" size="md">
-                <BsFillTrashFill />
+              <Button variant="danger" size="md" on>
+                <BsFillTrashFill onClick={()=>console.log("----------")
+              }/>
               </Button>
             </TipOnHover>
           </div>

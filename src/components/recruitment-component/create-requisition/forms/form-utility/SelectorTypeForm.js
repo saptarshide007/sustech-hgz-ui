@@ -4,10 +4,12 @@ import React, { useState } from "react";
 import { Fade } from "react-reveal";
 import Select from "react-select";
 import { IoIosCreate } from "react-icons/io";
-import { ToolTipButton } from "../../utility/Button";
-import CreateSkill from "./secondaryforms/CreateSkill";
-import CreateCertification from "./secondaryforms/CreateCertification";
-import CreateQualification from "./secondaryforms/CreateQualification";
+import { ToolTipButton } from "../../../utility/Button";
+import CreateSkill from "../secondary-forms/CreateSkill";
+import CreateCertification from "../secondary-forms/CreateCertification";
+import CreateQualification from "../secondary-forms/CreateQualification";
+import CreateRole from "../secondary-forms/CreateRole";
+import CreateWorkAuth from "../secondary-forms/CreateWorkAuth";
 const SelectorTypeForm = (props) => {
   const [selectedSkill, setSelectedSkill] = useState("");
   const [modalShow, setModalShow] = useState(false);
@@ -34,24 +36,39 @@ const SelectorTypeForm = (props) => {
     }
   };
   const SecondaryForm=(props)=>{
-    if(props.form==="Certification")
+    switch(props.form)
+    {
+
+
+    case "Certification":
       return <CreateCertification
       show={modalShow}
       onHide={() => setModalShow(false)}
       onAddHandler={props.onAddHandler}
     />
-    if(props.form==="Qualification")
+    case "Qualification":
       return <CreateQualification
       show={modalShow}
       onHide={() => setModalShow(false)}
       onAddHandler={props.onAddHandler}
     />
-    if(props.form==="Skill")
+    case "Skill":
       return <CreateSkill
       show={modalShow}
       onHide={() => setModalShow(false)}
       onAddHandler={props.onAddHandler}
     />
+    case "Role":
+      return <CreateRole
+      show={modalShow}
+      onHide={() => setModalShow(false)}
+      onAddHandler={props.onAddHandler}
+    />
+    case "WorkAuth":
+      return <CreateWorkAuth show={modalShow}
+      onHide={() => setModalShow(false)}
+      onAddHandler={props.onAddHandler}/>
+    }
   }
   return (
     <React.Fragment>
