@@ -1,3 +1,4 @@
+import styles from "./Topbar.module.css"
 const Topbar = (props) => {
   const hamburgerClick = props.hamburgerClick;
   const hamburgerActive = props.hamburgerActive;
@@ -9,23 +10,23 @@ const Topbar = (props) => {
   }
 
   return (
-    <nav className="example-top-bar">
-      <button className={hamburgerClassName} onClick={hamburgerClick}>
+    <nav className={`${styles["example-top-bar"]}`}>
+      <button className={`${styles["example-hamburger-menu"]}`} onClick={hamburgerClick}>
         <span></span>
         <span></span>
         <span></span>
       </button>
-      <div className="example-search-box">
-        <input type="search" className="example-search-input" />
-        <button type="button" className="example-search-button">
-          <span className="example-search-button-icon"></span>
+      <div className={`${styles["example-search-box"]}`}>
+        <input type="search" className={`${styles["example-search-input"]}`}/>
+        <button type="button" className={`${styles["example-search-button"]}`}>
+          <span className={`${styles["example-search-button-icon"]}`}></span>
         </button>
       </div>
-      <div className="example-top-bar-left-links">
+      <div className={`${styles["example-top-bar-left-links"]}`}>
         <ExampleTopBarLink />
         <ExampleTopBarLink />
       </div>
-      <div className="example-top-bar-right-links">
+      <div className={`${styles["example-top-bar-right-links"]}`}>
         <ExampleTopBarLink />
         <ExampleTopBarLink />
         <ExampleTopBarLink />
@@ -36,7 +37,7 @@ const Topbar = (props) => {
 };
 function ExampleTopBarLink() {
   return (
-    <a href="#" className="example-top-bar-link" onClick={() => false}>
+    <a href="#" className={`${styles["example-top-bar-link"]}`} onClick={() => false}>
       <ExampleIcon size="24px" color="#f2f2f2" />
     </a>
   );
@@ -47,7 +48,7 @@ function ExampleIcon(props) {
 
   return (
     <i
-      className="example-icon"
+      className={`${styles["example-icon"]}`}
       style={{
         "--size": size,
         "--color": color,

@@ -1,9 +1,10 @@
 .form-wrapper {
-  width: 1000px;
+
   box-shadow: 9px 5px 15px 5px #d6d6d6;
   border-radius: 10px;
-  height: 100vh;
-  align-items: center;
+  height: 85vh;
+  text-align: left;
+  width:1000px;
   /* background: linear-gradient(15deg, #d33f34 50%, #a61322 50.1%); */
 }
 ::-webkit-scrollbar {
@@ -22,8 +23,8 @@
 
 .form-wrapper .form-card {
   overflow: auto;
-  width: 900px;
-  height: 81vh;
+  width:900px;
+  height: 70vh;
   padding-left: 80px;
   padding-right: 80px;
   padding-top: 10px;
@@ -38,6 +39,7 @@
   color: #000000;
   font-weight: 700;
   text-decoration: none solid rgb(68, 68, 68);
+  position: relative;
 }
 
 .form-wrapper .nav-form {

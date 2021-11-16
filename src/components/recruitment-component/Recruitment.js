@@ -1,31 +1,27 @@
 import Sidebar from "./Sidebar";
 import React, { useState } from "react";
-import CreateAppList from "./create/CreateAppList";
 import Topbar from "./Topbar";
-import { Zoom, Fade, Roll } from "react-reveal";
-import "./Recruitment.css"
-const Recruitment = () => {
+import styles from "./Recruitment.module.css"
+const Recruitment = (props) => {
   const [expandOffcanvas, setExpandOffcanvas] = useState(false);
-  const permissionList = ["Dashboard", "Create"];
+  const permissionList = ["Dashboard", "NewRequisition", "Configure"];
   return (
-    <div className="example-offcanvas-container">
-      <Fade left>
+    <React.Fragment>
+    <div className={`${styles["example-offcanvas-container"]}`}>
         <Sidebar expanded={expandOffcanvas} permissionList={permissionList} />
-      </Fade>
-      <div className="example-offcanvas-screen">
-        <Fade top>
+      <div className={`${styles["example-offcanvas-screen"]}`}>
           <Topbar
             hamburgerActive={expandOffcanvas}
             hamburgerClick={() => {
               setExpandOffcanvas(!expandOffcanvas);
             }}
           />
-          
-        </Fade>
-        <CreateAppList/>
+          <div className={`${styles["children"]}`}>
+          {props.children}
+          </div>
       </div>
-      
     </div>
+    </React.Fragment>
   );
 };
 

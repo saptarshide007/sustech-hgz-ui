@@ -36,7 +36,7 @@ const Requisition = () => {
   };
   return (
     <React.Fragment>
-      <div style={{ position: "absolute" }}>
+      <div style={{ position: "relative",top:"8%"}}>
         <ToolTipButton
           variant="outline-primary"
           size="lg"
@@ -46,7 +46,7 @@ const Requisition = () => {
           onClick={toggleFormHandler}
           active={activeBtn[0]}
         />
-        <span style={{ display: "inline-block", width: "1001px" }} />
+        <span style={{ display: "inline-block", width: "890px" }} />
         <ToolTipButton
           variant="outline-primary"
           size="lg"

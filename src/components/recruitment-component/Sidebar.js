@@ -1,6 +1,35 @@
-import { useState } from "react";
+import {React, useState } from "react";
 import { FaTimes, FaBars, FaMicrosoft, FaBahai } from "react-icons/fa";
+import { MdOutlineSchool,MdAdminPanelSettings,MdAssignment,MdAssignmentInd } from "react-icons/md";
+import { IoIosAddCircle } from "react-icons/io";
+import { AiOutlineForm } from "react-icons/ai";
 import styles from "./Sidebar.module.css";
+class Post {
+  constructor(title, icon, link) {
+    this.title = title;
+    this.icon = icon;
+    this.link=link;
+  }}
+
+
+const app =  [
+    new Post(
+    'DashBoard',
+    <FaMicrosoft/>,
+    "/"
+    ),
+
+    new Post(
+      'Create Requisition',
+      <IoIosAddCircle/>,
+      "/requisition"
+      ),
+
+      new Post(
+        'Configure',
+        <AiOutlineForm/>,
+        "/create"
+        )];
 
 const Sidebar = (props) => {
   const hamburgerClick = props.hamburgerClick;
@@ -20,10 +49,9 @@ const Sidebar = (props) => {
   );
 };
 const SideBarItems = (props) => {
-  console.log(props.permissionList);
   return (
     <ul className={`${styles["side-bar-list"]}`}>
-      {props.permissionList.map((permission) => (
+      {app.map((permission) => (
         <SideBarLink sideBarItem={permission} expanded={props.expanded} />
       ))}
     </ul>
@@ -45,7 +73,7 @@ function SideBarLink(props) {
   return (
     <li>
       <a
-        href="#"
+        href={props.sideBarItem.link}
         className={`${styles["side-bar-link"]}`}
         onClick={() => false}
       >
@@ -55,14 +83,15 @@ function SideBarLink(props) {
           }`}
         >
           <div>
-            <Icon />
+            {props.sideBarItem.icon}
           </div>
         </span>
         <div className={`${styles["skeleton"]}`}>
-          <span>{props.sideBarItem}</span>
+          <span>{props.sideBarItem.title}</span>
         </div>
       </a>
     </li>
+
   );
 }
 
