@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { Fade } from "react-reveal";
 import Select from "react-select";
 import { IoIosCreate } from "react-icons/io";
-import { ToolTipButton } from "../../../utility/Button";
+import { ToolTipButton } from "../../utility/Button";
 import CreateSkill from "../secondary-forms/CreateSkill";
 import CreateCertification from "../secondary-forms/CreateCertification";
 import CreateQualification from "../secondary-forms/CreateQualification";
@@ -17,8 +17,7 @@ const SelectorTypeForm = (props) => {
     setSelectedSkill(selectedOption.label);
   };
   const addHandler = () => {
-    if(selectedSkill!=="")
-    props.addSelectedItemHandler(selectedSkill);
+    if (selectedSkill !== "") props.addSelectedItemHandler(selectedSkill);
   };
   const ButtonElement = (props) => {
     if (props.disabled) {
@@ -35,41 +34,50 @@ const SelectorTypeForm = (props) => {
       );
     }
   };
-  const SecondaryForm=(props)=>{
-    switch(props.form)
-    {
-
-
-    case "Certification":
-      return <CreateCertification
-      show={modalShow}
-      onHide={() => setModalShow(false)}
-      onAddHandler={props.onAddHandler}
-    />
-    case "Qualification":
-      return <CreateQualification
-      show={modalShow}
-      onHide={() => setModalShow(false)}
-      onAddHandler={props.onAddHandler}
-    />
-    case "Skill":
-      return <CreateSkill
-      show={modalShow}
-      onHide={() => setModalShow(false)}
-      onAddHandler={props.onAddHandler}
-    />
-    case "Role":
-      return <CreateRole
-      show={modalShow}
-      onHide={() => setModalShow(false)}
-      onAddHandler={props.onAddHandler}
-    />
-    case "WorkAuth":
-      return <CreateWorkAuth show={modalShow}
-      onHide={() => setModalShow(false)}
-      onAddHandler={props.onAddHandler}/>
+  const SecondaryForm = (props) => {
+    switch (props.form) {
+      case "Certification":
+        return (
+          <CreateCertification
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            onAddHandler={props.onAddHandler}
+          />
+        );
+      case "Qualification":
+        return (
+          <CreateQualification
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            onAddHandler={props.onAddHandler}
+          />
+        );
+      case "Skill":
+        return (
+          <CreateSkill
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            onAddHandler={props.onAddHandler}
+          />
+        );
+      case "Role":
+        return (
+          <CreateRole
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            onAddHandler={props.onAddHandler}
+          />
+        );
+      case "WorkAuth":
+        return (
+          <CreateWorkAuth
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            onAddHandler={props.onAddHandler}
+          />
+        );
     }
-  }
+  };
   return (
     <React.Fragment>
       <Fade>

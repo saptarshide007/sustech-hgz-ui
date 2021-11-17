@@ -1,11 +1,11 @@
 import { Form, Row, Col, Badge, Stack } from "react-bootstrap";
-import styles from "../css/Basic.module.css";
+import styles from "../../resources/css/modules/Basic.module.css";
 import React, { useState } from "react";
 import DatePicker from "react-date-picker";
 import { Fade } from "react-reveal";
 import Select from "react-select";
 import { IoIosCreate } from "react-icons/io";
-import { ToolTipButton } from "../../../utility/Button";
+import { ToolTipButton } from "../../utility/Button";
 import CreateType from "../secondary-forms/CreateType";
 import SelectorTypeForm from "../form-utility/SelectorTypeForm";
 const BasicForm = (props) => {
@@ -101,8 +101,8 @@ const BasicForm = (props) => {
                       onChange={handleTypeChange}
                       value={{ label: formDataType, value: formDataType }}
                       options={props.typeList.map((value) => ({
-                        label: value,
-                        value: value,
+                        label: value.code,
+                        value: value.code,
                       }))}
                     />
                   </div>

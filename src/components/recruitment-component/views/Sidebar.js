@@ -1,35 +1,29 @@
-import {React, useState } from "react";
+import { React, useState } from "react";
 import { FaTimes, FaBars, FaMicrosoft, FaBahai } from "react-icons/fa";
-import { MdOutlineSchool,MdAdminPanelSettings,MdAssignment,MdAssignmentInd } from "react-icons/md";
+import {
+  MdOutlineSchool,
+  MdAdminPanelSettings,
+  MdAssignment,
+  MdAssignmentInd,
+} from "react-icons/md";
 import { IoIosAddCircle } from "react-icons/io";
 import { AiOutlineForm } from "react-icons/ai";
-import styles from "./Sidebar.module.css";
+import styles from "../resources/css/modules/Sidebar.Module.css";
 class Post {
   constructor(title, icon, link) {
     this.title = title;
     this.icon = icon;
-    this.link=link;
-  }}
+    this.link = link;
+  }
+}
 
+const app = [
+  new Post("DashBoard", <FaMicrosoft />, "/"),
 
-const app =  [
-    new Post(
-    'DashBoard',
-    <FaMicrosoft/>,
-    "/"
-    ),
+  new Post("Create Requisition", <IoIosAddCircle />, "/requisition"),
 
-    new Post(
-      'Create Requisition',
-      <IoIosAddCircle/>,
-      "/requisition"
-      ),
-
-      new Post(
-        'Configure',
-        <AiOutlineForm/>,
-        "/create"
-        )];
+  new Post("Configure", <AiOutlineForm />, "/configure"),
+];
 
 const Sidebar = (props) => {
   const hamburgerClick = props.hamburgerClick;
@@ -82,16 +76,13 @@ function SideBarLink(props) {
             props.expanded && `${styles["side-link-expanded"]}`
           }`}
         >
-          <div>
-            {props.sideBarItem.icon}
-          </div>
+          <div>{props.sideBarItem.icon}</div>
         </span>
         <div className={`${styles["skeleton"]}`}>
           <span>{props.sideBarItem.title}</span>
         </div>
       </a>
     </li>
-
   );
 }
 

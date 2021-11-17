@@ -1,4 +1,4 @@
-import styles from "../css/ListSelector.module.css";
+import styles from "../../resources/css/modules/ListSelector.module.css";
 import { Fade } from "react-reveal";
 
 import { BsFillTrashFill, BsCheckLg } from "react-icons/bs";
@@ -51,28 +51,26 @@ const Box = (props) => {
             <p>{props.value}</p>
           </div>
           <div className={`${styles["action"]}`}>
-          <TipOnHover key="weight" placement="top" tip="Weight">
-            <input
-              type="number"
-              id="quantity"
-              name="quantity"
-              min="1"
-              max="10"
-              defaultValue="1"
-              className={`${styles["weight-input"]}`}
-              onChange={(e)=>console.log(e.target.value)
-              }
-            />
-          </TipOnHover>
-          <div>
-            <MandatoryMarker value={props.value} />{" "}
-            <TipOnHover key="weight" placement="top" tip="Delete">
-              <Button variant="danger" size="md" on>
-                <BsFillTrashFill onClick={()=>console.log("----------")
-              }/>
-              </Button>
+            <TipOnHover key="weight" placement="top" tip="Weight">
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                min="1"
+                max="10"
+                defaultValue="1"
+                className={`${styles["weight-input"]}`}
+                onChange={(e) => console.log(e.target.value)}
+              />
             </TipOnHover>
-          </div>
+            <div>
+              <MandatoryMarker value={props.value} />{" "}
+              <TipOnHover key="weight" placement="top" tip="Delete">
+                <Button variant="danger" size="md" on>
+                  <BsFillTrashFill onClick={() => console.log("----------")} />
+                </Button>
+              </TipOnHover>
+            </div>
           </div>
         </div>
       </div>

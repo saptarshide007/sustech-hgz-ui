@@ -29,8 +29,8 @@ body {
   filter: blur(1.25rem);
   animation: animate-skeleton-shine 2048ms ease-in-out infinite;
 }
-.children{
-  margin:  auto;
+.children {
+  margin: 0 auto;
 }
 @keyframes animate-skeleton {
   50% {

@@ -1,4 +1,4 @@
-import styles from "./Topbar.module.css"
+import styles from "../resources/css/modules/Topbar.module.css";
 const Topbar = (props) => {
   const hamburgerClick = props.hamburgerClick;
   const hamburgerActive = props.hamburgerActive;
@@ -11,13 +11,16 @@ const Topbar = (props) => {
 
   return (
     <nav className={`${styles["example-top-bar"]}`}>
-      <button className={`${styles["example-hamburger-menu"]}`} onClick={hamburgerClick}>
+      <button
+        className={`${styles["example-hamburger-menu"]}`}
+        onClick={hamburgerClick}
+      >
         <span></span>
         <span></span>
         <span></span>
       </button>
       <div className={`${styles["example-search-box"]}`}>
-        <input type="search" className={`${styles["example-search-input"]}`}/>
+        <input type="search" className={`${styles["example-search-input"]}`} />
         <button type="button" className={`${styles["example-search-button"]}`}>
           <span className={`${styles["example-search-button-icon"]}`}></span>
         </button>
@@ -37,7 +40,11 @@ const Topbar = (props) => {
 };
 function ExampleTopBarLink() {
   return (
-    <a href="#" className={`${styles["example-top-bar-link"]}`} onClick={() => false}>
+    <a
+      href="#"
+      className={`${styles["example-top-bar-link"]}`}
+      onClick={() => false}
+    >
       <ExampleIcon size="24px" color="#f2f2f2" />
     </a>
   );

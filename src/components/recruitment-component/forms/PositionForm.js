@@ -2,11 +2,15 @@ import Forms from "./Forms";
 const totalForms = 3;
 class PositionForm {
   constructor(formList, activeForm) {
-    this.activeForm = 1;
+    this.activeForm = 0;
   }
 
   getActive() {
     return <Forms form={this.activeForm} />;
+  }
+  getForm(id) {
+    console.log(id);
+    return <Forms form={id} />;
   }
   getPrevious() {
     if (this.activeForm === 1) return null;

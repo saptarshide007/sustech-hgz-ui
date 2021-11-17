@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import BasicForm from "./primary-forms/BasicForm";
-import DemographicForm from "./primary-forms/DemographicForm"
+import DemographicForm from "./primary-forms/DemographicForm";
 import {
   SkillData,
   JobTypeData,
   CertData,
   QualificationData,
   RolesData,
-  WorkAuthData
+  WorkAuthData,
 } from "../data/Data";
 import CredentialForm from "./primary-forms/CredentialForm";
 const formData = {
@@ -23,25 +23,29 @@ const formData = {
   workAuthorizaion: [],
   financial: [],
   roles: [],
-  status:""
+  status: "",
 };
 const Forms = (props) => {
   const [skillList, setSkills] = useState(SkillData.getList());
   const [typeList, setType] = useState(JobTypeData.getList());
   const [certList, setCert] = useState(CertData.getList());
-  const [roleList, setRole] = useState(RolesData.getList().map(role=>role.name));
-  const [workAuthList, setWorkAuth] = useState(WorkAuthData.getList().map(workAuth=>workAuth.name));
+  const [roleList, setRole] = useState(
+    RolesData.getList().map((role) => role.name)
+  );
+  const [workAuthList, setWorkAuth] = useState(
+    WorkAuthData.getList().map((workAuth) => workAuth.name)
+  );
   const [qualificationList, setQualification] = useState(
     QualificationData.getList()
   );
 
   const addNewWorkAuth = (workAuth) => {
     WorkAuthData.add(workAuth);
-    setWorkAuth(WorkAuthData.getList().map(workAuth=>workAuth.name));
+    setWorkAuth(WorkAuthData.getList().map((workAuth) => workAuth.name));
   };
   const addNewRole = (role) => {
     RolesData.add(role);
-    setRole(RolesData.getList().map(role=>role.name));
+    setRole(RolesData.getList().map((role) => role.name));
   };
   const addNewType = (type) => {
     JobTypeData.add(type);
@@ -59,7 +63,7 @@ const Forms = (props) => {
     QualificationData.add(qualification);
     setQualification(QualificationData.getList());
   };
-  if (props.form === 1)
+  if (props.form === 0)
     return (
       <BasicForm
         roleList={roleList}
@@ -69,7 +73,7 @@ const Forms = (props) => {
         addNewType={addNewType}
       />
     );
-  if (props.form === 2)
+  if (props.form === 1)
     return (
       <CredentialForm
         certList={certList}
@@ -81,11 +85,11 @@ const Forms = (props) => {
         addNewSkill={addNewSkill}
       />
     );
-  if (props.form === 3)
+  if (props.form === 2)
     return (
       <DemographicForm
-      workAuthList={workAuthList}
-      addNewWorkAuth={addNewWorkAuth}
+        workAuthList={workAuthList}
+        addNewWorkAuth={addNewWorkAuth}
         formData={formData}
       />
     );

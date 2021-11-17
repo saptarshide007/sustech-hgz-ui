@@ -11,7 +11,11 @@ class SkillListData {
 }
 class JobTypeListData {
   constructor(jobType) {
-    this.jobType = ["IT", "Mechanical", "Civil"];
+    this.jobType = [
+      { code: "IT", description: "This is a sample description" },
+      { code: "Mechanical", description: "Meachanocal description" },
+      { code: "Civil", description: "CivilDescription" },
+    ];
   }
   getList() {
     return this.jobType;
@@ -46,7 +50,11 @@ class QualificationListData {
 }
 class RolesListData {
   constructor(roleList) {
-    this.roleList = [{name:"Role1",description:""},{name:"Role2",description:""},{name:"Role3",description:""} ];
+    this.roleList = [
+      { name: "Role1", description: "" },
+      { name: "Role2", description: "" },
+      { name: "Role3", description: "" },
+    ];
   }
   getList() {
     return this.roleList;
@@ -54,13 +62,15 @@ class RolesListData {
   add(role) {
     this.roleList.push(role);
   }
-  getDescription(name) {
-    
-  }
+  getDescription(name) {}
 }
 class WorkAuthListData {
   constructor(workAuthList) {
-    this.workAuthList = [{name:"Australia",description:""},{name:"India",description:""},{name:"Mining",description:""} ];
+    this.workAuthList = [
+      { name: "Australia", description: "" },
+      { name: "India", description: "" },
+      { name: "Mining", description: "" },
+    ];
   }
   getList() {
     return this.workAuthList;
@@ -68,13 +78,11 @@ class WorkAuthListData {
   add(workAuth) {
     this.workAuthList.push(workAuth);
   }
-  getDescription(name) {
-    
-  }
+  getDescription(name) {}
 }
 export const SkillData = new SkillListData();
 export const JobTypeData = new JobTypeListData();
 export const CertData = new CertificationListData();
 export const QualificationData = new QualificationListData();
 export const RolesData = new RolesListData();
-export const WorkAuthData =new WorkAuthListData();
+export const WorkAuthData = new WorkAuthListData();
